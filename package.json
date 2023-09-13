@@ -1,0 +1,18 @@
+{
+  "name": "GameOfLife",
+  "version": "1.0.0",
+  "description": "Kata GameOfLife",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose",
+    "watch": "jest --watchAll --color --coverage --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^28.1.0"
+  }
+}
