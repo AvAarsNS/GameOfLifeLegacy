@@ -1,9 +1,0 @@
-Feature: Blinker
-
-░▓░    ░░░
-░▓░ -> ▓▓▓
-░▓░    ░░░
-Scenario: Next blinker generation
-    Given a vertival blinker
-    When the next tick is generated
-    Then the blinker has evolved to a horizontal line

@@ -2,7 +2,6 @@
   "name": "GameOfLife",
   "version": "1.0.0",
   "description": "Kata GameOfLife",
-  "type": "module",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -16,6 +15,7 @@
   "dependencies": {
     "@babel/core": "^7.22.17",
     "babel-jest": "^29.7.0",
+    "@babel/preset-env": "^7.22.15",
     "jest": "^28.1.0",
     "jest-cucumber": "^3.0.1"
   }
