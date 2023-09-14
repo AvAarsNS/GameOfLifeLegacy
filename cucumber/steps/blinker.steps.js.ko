@@ -1,0 +1,6 @@
+// import { loadFeature, defineFeature } from "jest-cucumber";
+
+// const feature = loadFeature("./cucumber/features/blinker.feature");
+
+// defineFeature(feature, (test) => {
+// });
