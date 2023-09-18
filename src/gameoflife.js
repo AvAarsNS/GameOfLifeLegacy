@@ -2,7 +2,7 @@ function isTheCellAlive(cell) {
     return cell == 1 
 }
 
-function determineTheAmountOfAliveNeighbours(universe, cellRow, cellColumn) {
+export function determineTheAmountOfAliveNeighbours(universe, cellRow, cellColumn) {
     var numberOfNeiboursAlive = 0
     return numberOfNeiboursAlive = isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn) 
     + isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) 
@@ -103,11 +103,9 @@ function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     } else return 1
 }
 
-module.exports = {
-    isTheCellAlive, 
-    determineTheAmountOfAliveNeighbours, 
-    determineIfThereIsUnderpopulation, 
-    determineIfThereIsReproduction, 
-    determineIfThereIsOvercrowding,
-    determineNextStatusOfCell
+export function generateNextTick(currentUniverse) {
+    return currentUniverse.map((row, rowIndex) => row.map((cell, columnIndex) => {
+        const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
+        return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
+    }));
 }
