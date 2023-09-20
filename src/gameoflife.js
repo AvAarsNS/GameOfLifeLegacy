@@ -1,4 +1,4 @@
-function isTheCellAlive(cell) {
+export function isTheCellAlive(cell) {
     return cell == 1 
 }
 
@@ -14,19 +14,19 @@ export function determineTheAmountOfAliveNeighbours(universe, cellRow, cellColum
     + isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn)
 }
 
-function isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn){
+export function isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn){
     if (universe[cellRow][cellColumn + 1] == 1){
         return 1
     } else return 0
 }
 
-function isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) {
     if (universe[cellRow][cellColumn - 1] == 1) {
         return 1
     } else return 0
 }
 
-function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)){
         if (universe[cellRow + 1][cellColumn] == 1) {
             return 1
@@ -34,7 +34,7 @@ function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
     } return 0
 }
 
-function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)) {
         if (universe[cellRow + 1][cellColumn + 1] == 1) {
             return 1
@@ -42,7 +42,7 @@ function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn
     } return 0
 }
 
-function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)) {
         if (universe[cellRow + 1][cellColumn - 1] == 1) {
             return 1
@@ -50,7 +50,7 @@ function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn)
     } return 0
 }
 
-function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn - 1] == 1) {
             return 1
@@ -58,7 +58,7 @@ function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
     } return 0
 }
 
-function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn + 1] == 1) {
             return 1
@@ -66,7 +66,7 @@ function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
     } return 0
 }
 
-function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn] == 1) {
             return 1
@@ -74,28 +74,28 @@ function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
     } return 0
 }
 
-function doesTheUniverseContinueBelowThisRow(universe, cellRow){
+export function doesTheUniverseContinueBelowThisRow(universe, cellRow){
     var cellRowInNormalNumbers = cellRow + 1
     return universe.length > cellRowInNormalNumbers
 }
 
-function doesTheUniverseContinueAboveThisRow(cellRow) {
+export function doesTheUniverseContinueAboveThisRow(cellRow) {
     return cellRow > 0
 }
 
-function determineIfThereIsUnderpopulation(aliveNeighbours) {
+export function determineIfThereIsUnderpopulation(aliveNeighbours) {
     return aliveNeighbours <= 1    
 }
 
-function determineIfThereIsReproduction(aliveNeighbours) {
+export function determineIfThereIsReproduction(aliveNeighbours) {
     return aliveNeighbours == 3
 }
 
-function determineIfThereIsOvercrowding(aliveNeighbours) {
+export function determineIfThereIsOvercrowding(aliveNeighbours) {
     return aliveNeighbours > 3
 }
 
-function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
+export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     if (aliveNeighbours == 2){
         return cellStatus
     } if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours)) {
@@ -103,7 +103,7 @@ function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     } else return 1
 }
 
-export function generateNextTick(currentUniverse) {
+export  function generateNextTick(currentUniverse) {
     return currentUniverse.map((row, rowIndex) => row.map((cell, columnIndex) => {
         const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
