@@ -8,10 +8,10 @@ const {
 } = require('../src/gameoflife');
 
 describe('When we play the game of life, we want to be able to determine whether a cell is dead or alive', () => {
-    it('▓ -> not alive', () => {
+    it('░ -> dead', () => {
         expect(isTheCellAlive(0)).toEqual(false);        
     });
-    it('░ -> alive', () => {
+    it('▓ -> alive', () => {
         expect(isTheCellAlive(1)).toEqual(true);        
     });
 });
@@ -19,55 +19,73 @@ describe('When we play the game of life, we want to be able to determine whether
 describe('We want to be able to determine the amount of alive neighbours for each cell', () => {
     describe('When our universe consists of 1 row', () => {
         
-        it('▓▓▓ first cell has no alive neighbours', () => {
+        it('░░░ first cell has no alive neighbours', () => {
             expect(determineTheAmountOfAliveNeighbours([[0,0,0]],0,0)).toEqual(0);
         });
-        it('▓░▓ first cell has one alive neighbour', () => {
+        it('░▓░ first cell has one alive neighbours', () => {
             expect(determineTheAmountOfAliveNeighbours([[0, 1, 0]],0,0)).toEqual(1);
         });
-        it('▓░░ second cell has one alive neighbour', () => {
+        it('░▓▓ second cell has one alive neighbour', () => {
             expect(determineTheAmountOfAliveNeighbours([[0, 1, 1]],0,1)).toEqual(1);
         });
-        it('░░░ second cell has two alive neighbours', () => {
+        it('▓▓▓ second cell has two alive neighbours', () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 1]],0,1)).toEqual(2);
         });
     });
-    describe('When our universe consists of 2 rows', () => {
-        it('░▓▓, ▓▓▓ first cell has no alive neighbours ', () => {
+    describe('When our universe consists of multiple rows', () => {
+        it(`
+        ▓░░
+        ░░░ top left cell has no alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1,0,0],[0,0,0]],0,0)).toEqual(0)
         });
-        it('░░▓, ▓▓▓ first cell has one alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ░░░ top left cell has one alive neighbour`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [0, 0, 0]],0,0)).toEqual(1)
         });
-        it('░░▓, ░▓▓ first cell has 2 alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ▓░░ top left cell has 2 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 0, 0]], 0, 0)).toEqual(2)
         });
-        it('░░▓, ░░▓ first cell has 3 alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ▓▓░ top left cell has 3 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 0)).toEqual(3)
         });
-        it('░░▓, ░░▓ 3rd cell on the 2nd row has 2 alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ▓▓░ 3rd cell on the 2nd row has 2 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 2)).toEqual(2)
         });
-        it('░░▓, ░░▓ second cell on the first row has 3 alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ▓▓░ second cell on the first row has 3 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 1)).toEqual(3)
         });
-        it('░░▓, ░░▓ first cell on the second row has 3 alive neighbours ', () => {
+        it(`
+        ▓▓░
+        ▓▓░ first cell on the second row has 3 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 0)).toEqual(3)
         });
-        it('░░░, ░░░, ░░░ second cell on the second row has 8 alive neighbours ', () => {
+        it(`
+        ▓▓▓
+        ▓▓▓
+        ▓▓▓ second cell on the second row has 8 alive neighbours`, () => {
             expect(determineTheAmountOfAliveNeighbours([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 1, 1)).toEqual(8)
         });
     });
 });
 
-describe('We want to be able to determine if a cell can persist based on the amount of alive neighbours', () => {
-    describe('When there are less than 2 alive neighbours there is underpopulation:', () => {
-        it('2 -> no', () => {
-            expect(determineIfThereIsUnderpopulation(2)).toEqual(false)
-        });
+describe('We want to be able to determine if a cell can survive based on the amount of alive neighbours', () => {
+    describe('When there are less than 2 alive neighbours there is underpopulation, leading to the cell to die:', () => {
         it('1 -> yes', () => {
             expect(determineIfThereIsUnderpopulation(1)).toEqual(true)
         });
+        it('2 -> no', () => {
+            expect(determineIfThereIsUnderpopulation(2)).toEqual(false)
+        });
+
     });    
     describe('When there are exactly 3 alive neighbours there is reproduction:', () => {
         it('2 -> no', () => {
