@@ -70,61 +70,67 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });
     });
 
-    describe('We want to be able to determine if a cell can survive based on the amount of alive neighbours', () => {
-        describe('When there are less than 2 alive neighbours there is underpopulation, leading to the cell to die:', () => {
-            it('1 -> yes', () => {
+    describe(`
+    Now that we know how many alive neighbours a cell has, we can introduce 2 important concepts:
+    - Underpopulation
+    - Reproduction
+    - Overcrowding`, () => {
+        describe('Underpopulation causes a cell to die. This occurs when', () => {
+            it('a cell has 0 alive neighbours', () => {
+                expect(determineIfThereIsUnderpopulation(0)).toEqual(true)
+            });
+            it('or 1 alive neighbour', () => {
                 expect(determineIfThereIsUnderpopulation(1)).toEqual(true)
             });
-            it('2 -> no', () => {
+            it('but not when a cell has at least 2 alive neighbours', () => {
                 expect(determineIfThereIsUnderpopulation(2)).toEqual(false)
             });
 
         });    
-        describe('When there are exactly 3 alive neighbours there is reproduction:', () => {
-            it('2 -> no', () => {
-                expect(determineIfThereIsReproduction(2)).toEqual(false)
-            });
-            it('3 -> yes', () => {
+        describe(`On the other hand, reproduction causes a cell to become alive. This only happens when`, () => {
+            it('exactly 3 neighbours are alive', () => {
                 expect(determineIfThereIsReproduction(3)).toEqual(true)
             });
-            it('4 -> no', () => {
+            it('and not when there are e.g. 4 cells alive', () => {
                 expect(determineIfThereIsReproduction(4)).toEqual(false)
             });
         });    
-        describe('When there are more than 3 alive neighbours there is overcrowding:', () => {
-            it('3 -> no', () => {
-                expect(determineIfThereIsOvercrowding(3)).toEqual(false)
-            });
-            it('4 -> yes', () => {
+        describe('And lastly we have overcrowding, which also leads to the death of a cell. This happens when', () => {
+            it('there are 4 (or more) alive neighbours', () => {
                 expect(determineIfThereIsOvercrowding(4)).toEqual(true)
             });
-        });
-        describe('When the cell is alive', () => {
-            it('1 neighbour, it dies because of underpopulation', () => {
-                expect(determineNextStatusOfCell(1,1)).toEqual(0)
-            });
-            it('2 neighbours, it stays alive because a there is a stable environment', () => {
-                expect(determineNextStatusOfCell(1,2)).toEqual(1)
-            });
-            it('3 neighbours, it stays alive because of reproduction', () => {
-                expect(determineNextStatusOfCell(1,3)).toEqual(1)
-            });
-            it('4 neighbours, it dies because of overpopulation', () => {
-                expect(determineNextStatusOfCell(1,4)).toEqual(0)
+            it('and not when there are less than 4 (e.g. 3)', () => {
+                expect(determineIfThereIsOvercrowding(3)).toEqual(false)
             });
         });
-        describe('When the cell is dead', () => {
-            it('1 neighbour, it stays dead because of underpopulation', () => {
-                expect(determineNextStatusOfCell(0, 1)).toEqual(0)
+        describe(`Bringing these concepts together, we can determine the state of a cell in the next tick.`, () => {
+            describe(`Looking at one specific cell that is alive, it will`, () => {
+                it('die when it only has 1 alive neighbour, because of underpopulation', () => {
+                    expect(determineNextStatusOfCell(1,1)).toEqual(0)
+                });
+                it('stay alive when it has 2 because a there is a stable environment', () => {
+                    expect(determineNextStatusOfCell(1,2)).toEqual(1)
+                });
+                it('also stay alive when there are 3, because of reproduction', () => {
+                    expect(determineNextStatusOfCell(1,3)).toEqual(1)
+                });
+                it('die with 4 neighbours, by overpopulation', () => {
+                    expect(determineNextStatusOfCell(1,4)).toEqual(0)
+                });
             });
-            it('2 neighbours, it stays dead because a there is a stable environment', () => {
-                expect(determineNextStatusOfCell(0, 2)).toEqual(0)
-            });
-            it('3 neighbours, it becomes alive because of reproduction', () => {
-                expect(determineNextStatusOfCell(0, 3)).toEqual(1)
-            });
-            it('4 neighbours, it stays dead because of overpopulation', () => {
-                expect(determineNextStatusOfCell(0, 4)).toEqual(0)
+            describe('When a cell is dead, it will', () => {
+                it('stay dead when it only has 1 living neighbour, because of underpopulation', () => {
+                    expect(determineNextStatusOfCell(0, 1)).toEqual(0)
+                });
+                it('also stay dead when there are 2, because a there is a stable environment', () => {
+                    expect(determineNextStatusOfCell(0, 2)).toEqual(0)
+                });
+                it('become alive because of reproduction when there are 3 jolly neighbours', () => {
+                    expect(determineNextStatusOfCell(0, 3)).toEqual(1)
+                });
+                it('stay dead because of overpopulation when there are 4', () => {
+                    expect(determineNextStatusOfCell(0, 4)).toEqual(0)
+                });
             });
         });
     });

@@ -103,7 +103,7 @@ export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     } else return 1
 }
 
-export  function generateNextTick(currentUniverse) {
+export function generateNextTick(currentUniverse) {
     return currentUniverse.map((row, rowIndex) => row.map((cell, columnIndex) => {
         const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
