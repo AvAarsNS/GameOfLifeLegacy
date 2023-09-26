@@ -283,7 +283,7 @@
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function <span class="fstat-no" title="function not covered" >isTheCellAlive(</span>cell) {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export function <span class="fstat-no" title="function not covered" >isTheCellAlive(</span>cell) {
 <span class="cstat-no" title="statement not covered" >    return cell == 1 </span>
 }
 &nbsp;
@@ -299,19 +299,19 @@ export function determineTheAmountOfAliveNeighbours(universe, cellRow, cellColum
     + isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn)
 }
 &nbsp;
-function isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn){
+export function isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn){
     if (universe[cellRow][cellColumn + 1] == 1){
         return 1
     } else return 0
 }
 &nbsp;
-function isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) {
     if (universe[cellRow][cellColumn - 1] == 1) {
         return 1
     } else return 0
 }
 &nbsp;
-function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)){
         if (universe[cellRow + 1][cellColumn] == 1) {
             return 1
@@ -319,7 +319,7 @@ function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
     } return 0
 }
 &nbsp;
-function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)) {
         if (universe[cellRow + 1][cellColumn + 1] == 1) {
             return 1
@@ -327,7 +327,7 @@ function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn
     } return 0
 }
 &nbsp;
-function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueBelowThisRow(universe, cellRow)) {
         if (universe[cellRow + 1][cellColumn - 1] == 1) {
             return 1
@@ -335,7 +335,7 @@ function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn)
     } return 0
 }
 &nbsp;
-function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn - 1] == 1) {
             return 1
@@ -343,7 +343,7 @@ function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
     } return 0
 }
 &nbsp;
-function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn + 1] == 1) {
             return 1
@@ -351,7 +351,7 @@ function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
     } return 0
 }
 &nbsp;
-function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
+export function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
     if (doesTheUniverseContinueAboveThisRow(cellRow)) {
         if (universe[cellRow - 1][cellColumn] == 1) {
             return 1
@@ -359,28 +359,28 @@ function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
     } return 0
 }
 &nbsp;
-function doesTheUniverseContinueBelowThisRow(universe, cellRow){
+export function doesTheUniverseContinueBelowThisRow(universe, cellRow){
     var cellRowInNormalNumbers = cellRow + 1
     return universe.length &gt; cellRowInNormalNumbers
 }
 &nbsp;
-function doesTheUniverseContinueAboveThisRow(cellRow) {
+export function doesTheUniverseContinueAboveThisRow(cellRow) {
     return cellRow &gt; 0
 }
 &nbsp;
-function determineIfThereIsUnderpopulation(aliveNeighbours) {
+export function determineIfThereIsUnderpopulation(aliveNeighbours) {
     return aliveNeighbours &lt;= 1    
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >determineIfThereIsReproduction(</span>aliveNeighbours) {
+export function <span class="fstat-no" title="function not covered" >determineIfThereIsReproduction(</span>aliveNeighbours) {
 <span class="cstat-no" title="statement not covered" >    return aliveNeighbours == 3</span>
 }
 &nbsp;
-function determineIfThereIsOvercrowding(aliveNeighbours) {
+export function determineIfThereIsOvercrowding(aliveNeighbours) {
     return aliveNeighbours &gt; 3
 }
 &nbsp;
-function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
+export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     if (aliveNeighbours == 2){
         return cellStatus
     } if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours)) {
@@ -388,7 +388,7 @@ function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
     } else return 1
 }
 &nbsp;
-export function generateNextTick(currentUniverse) {
+export  function generateNextTick(currentUniverse) {
     return currentUniverse.map((row, rowIndex) =&gt; row.map((cell, columnIndex) =&gt; {
         const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
@@ -400,7 +400,7 @@ export function generateNextTick(currentUniverse) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-19T07:28:04.265Z
+                at 2023-09-26T07:49:00.418Z
             </div>
         <script src="prettify.js"></script>
         <script>

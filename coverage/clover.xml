@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695108484272" clover="3.2.0">
-  <project timestamp="1695108484272" name="All files">
+<coverage generated="1695714540424" clover="3.2.0">
+  <project timestamp="1695714540424" name="All files">
     <metrics statements="53" coveredstatements="51" conditionals="34" coveredconditionals="34" methods="19" coveredmethods="17" elements="106" coveredelements="102" complexity="0" loc="53" ncloc="53" packages="1" files="1" classes="1"/>
     <file name="gameoflife.js" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\src\gameoflife.js">
       <metrics statements="53" coveredstatements="51" conditionals="34" coveredconditionals="34" methods="19" coveredmethods="17"/>
