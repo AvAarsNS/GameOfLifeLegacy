@@ -37,34 +37,37 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });
         describe(`And when our universe consists of multiple rows`, () => {
             it(`
-            ▓░░
-            ░░░ the top left cell has no alive neighbours`, () => {
+            → ▓░░
+              ░░░ this cell has no alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1,0,0],[0,0,0]],0,0)).toEqual(0)
             });
             it(`
-            ▓▓░
-            ▓▓░ the top left cell has 3 alive neighbours`, () => {
+            → ▓▓░
+              ▓▓░ this cell has 3 alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 0)).toEqual(3)
             });
             it(`
-            ▓▓░
-            ▓▓░ the 3rd cell on the 2nd row has 2 alive neighbours`, () => {
+              ▓▓░
+              ▓▓░
+                ↑ this cell has 2 alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 2)).toEqual(2)
             });
             it(`
+             ↓
             ▓▓░
-            ▓▓░ the second cell on the first row has 3 alive neighbours`, () => {
+            ▓▓░  this one has 3 alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 1)).toEqual(3)
             });
             it(`
             ▓▓░
-            ▓▓░ the first cell on the second row has 3 alive neighbours`, () => {
+            ▓▓░ 
+            ↑    the first cell on the second row has 3 alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 0)).toEqual(3)
             });
             it(`
             ▓▓▓
             ▓▓▓
-            ▓▓▓ the second cell on the second row has 8 alive neighbours`, () => {
+            ▓▓▓ the middle cell has 8 alive neighbours`, () => {
                 expect(determineTheAmountOfAliveNeighbours([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 1, 1)).toEqual(8)
             });
         });
