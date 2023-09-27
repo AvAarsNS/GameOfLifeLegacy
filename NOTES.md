@@ -32,8 +32,8 @@ It seems that the test suite (legacy.test.js) is a mix of unit and component tes
 ✅ - Create separate test suites for unit and component tests
 ✅ - Move component tests
 ✅ - Move unit tests
-🙌 - Make the component test suite read like a book
-- Make the unit test suite read like a book
+✅ - Make the component test suite read like a book
+🙌- Make the unit test suite read like a book
 ### Improvement 2: use doubles
 No doubles are used, which leads to a lot of duplication in the test suite. Try to use doubles to reduce the duplication.
 
