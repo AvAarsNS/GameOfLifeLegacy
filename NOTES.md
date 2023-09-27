@@ -25,10 +25,15 @@ No new code needed, yippieeeeee!!!!! ✅ ✅ ✅ ☠ ☠ ☠ ☠ ☠
 # Homework for 27-09
 
 ## ✅ Homework 1: find improvements to make the test report read like a book
-## Homework 2: Improve the readability and understandability of the test suite
+## 🙌 Homework 2: Improve the readability and understandability of the test suite
 ### Improvement 1: split into unit and component test suites
 It seems that the test suite (legacy.test.js) is a mix of unit and component tests. For example, this suite contains tests for determineTheAmountOfAliveNeighbours, which is actually a component. While determineIfThereIsUnderpopulation is also tested, which is a unit. This makes the test suite hard to read and understand. Try to split the test suite into a unit and component test suite.
 
+✅ - Create separate test suites for unit and component tests
+✅ - Move component tests
+✅ - Move unit tests
+🙌 - Make the component test suite read like a book
+- Make the unit test suite read like a book
 ### Improvement 2: use doubles
 No doubles are used, which leads to a lot of duplication in the test suite. Try to use doubles to reduce the duplication.
 
