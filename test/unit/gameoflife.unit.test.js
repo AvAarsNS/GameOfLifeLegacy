@@ -1,7 +1,7 @@
 const {
     isTheCellAlive,
     determineIfThereIsUnderpopulation, 
-    determineIfThereIsReproduction, 
+    determineIfReproductionOccurs, 
     determineIfThereIsOvercrowding,
 } = require('../../src/gameoflife');
 
@@ -36,10 +36,10 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });    
         describe(`On the other hand, reproduction causes a cell to become alive. This only happens when`, () => {
             it('exactly 3 neighbours are alive', () => {
-                expect(determineIfThereIsReproduction(3)).toEqual(true)
+                expect(determineIfReproductionOccurs(3)).toEqual(true)
             });
             it('and not when there are e.g. 4 cells alive', () => {
-                expect(determineIfThereIsReproduction(4)).toEqual(false)
+                expect(determineIfReproductionOccurs(4)).toEqual(false)
             });
         });    
         describe('And lastly we have overcrowding, which also leads to the death of a cell. This happens when', () => {

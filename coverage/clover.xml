@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695798840974" clover="3.2.0">
-  <project timestamp="1695798840974" name="All files">
-    <metrics statements="23" coveredstatements="19" conditionals="36" coveredconditionals="35" methods="21" coveredmethods="17" elements="80" coveredelements="71" complexity="0" loc="23" ncloc="23" packages="1" files="1" classes="1"/>
+<coverage generated="1695806285263" clover="3.2.0">
+  <project timestamp="1695806285263" name="All files">
+    <metrics statements="28" coveredstatements="6" conditionals="38" coveredconditionals="2" methods="22" coveredmethods="4" elements="88" coveredelements="12" complexity="0" loc="28" ncloc="28" packages="1" files="1" classes="1"/>
     <file name="gameoflife.js" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\src\gameoflife.js">
-      <metrics statements="23" coveredstatements="19" conditionals="36" coveredconditionals="35" methods="21" coveredmethods="17"/>
-      <line num="2" count="0" type="stmt"/>
-      <line num="6" count="9" type="stmt"/>
-      <line num="7" count="9" type="stmt"/>
-      <line num="18" count="9" type="cond" truecount="2" falsecount="0"/>
-      <line num="22" count="9" type="cond" truecount="2" falsecount="0"/>
-      <line num="26" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="30" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="34" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="38" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="42" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="46" count="9" type="cond" truecount="4" falsecount="0"/>
-      <line num="50" count="27" type="stmt"/>
-      <line num="51" count="27" type="stmt"/>
-      <line num="55" count="27" type="stmt"/>
-      <line num="59" count="6" type="stmt"/>
-      <line num="63" count="2" type="stmt"/>
-      <line num="67" count="4" type="stmt"/>
-      <line num="71" count="8" type="cond" truecount="5" falsecount="1"/>
-      <line num="75" count="8" type="stmt"/>
-      <line num="79" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="83" count="0" type="stmt"/>
-      <line num="84" count="0" type="stmt"/>
-      <line num="85" count="0" type="stmt"/>
+      <metrics statements="28" coveredstatements="6" conditionals="38" coveredconditionals="2" methods="22" coveredmethods="4"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="33" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="37" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="41" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="45" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="49" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="53" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="62" count="3" type="stmt"/>
+      <line num="66" count="2" type="stmt"/>
+      <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="74" count="0" type="stmt"/>
+      <line num="79" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="83" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="87" count="0" type="stmt"/>
+      <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="95" count="0" type="stmt"/>
+      <line num="96" count="0" type="stmt"/>
+      <line num="97" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

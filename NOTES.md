@@ -34,6 +34,7 @@ It seems that the test suite (legacy.test.js) is a mix of unit and component tes
 ✅ - Move unit tests
 ✅ - Make the component test suite read like a book
 🙌- Make the unit test suite read like a book
+- Check for stuff that is uncovered
 ### Improvement 2: use doubles
 No doubles are used, which leads to a lot of duplication in the test suite. Try to use doubles to reduce the duplication.
 
@@ -49,6 +50,10 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 - determineNextStatusOfCell
 
 ### Improvement 2: improve readability
-
+- Improve determineNextStatusOfCell
+-- Split into dead and alive versions
+-- apply Guard Clauses
+-- Create/update unit tests
+-- Update component tests
 
 Homework 4: Try to migrate to TypeScript

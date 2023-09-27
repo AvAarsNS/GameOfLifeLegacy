@@ -1,3 +1,6 @@
+const thresholdForReproduction = 3;
+const aliveCell = 1;
+
 export function isTheCellAlive(cell) {
     return cell == 1 
 }
@@ -59,16 +62,25 @@ export function determineIfThereIsUnderpopulation(aliveNeighbours) {
     return aliveNeighbours <= 1    
 }
 
-export function determineIfThereIsReproduction(aliveNeighbours) {
-    return aliveNeighbours == 3
-}
-
 export function determineIfThereIsOvercrowding(aliveNeighbours) {
     return aliveNeighbours > 3
 }
 // TODO: refactor this functionality. Suggestion: check beforehand if the cell is dead or alive and create seperate functions for each case.
 export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
-    return shouldCellSurvive(aliveNeighbours) ? cellStatus : shouldCellDie(aliveNeighbours) ? 0 : determineIfThereIsReproduction(aliveNeighbours) ? 1 : cellStatus;
+    if (cellStatus == aliveCell) {
+        return determineNextStatusOfAliveCell(aliveNeighbours, cellStatus)
+    }
+    else {
+        return determineIfReproductionOccurs(aliveNeighbours, cellStatus)
+    }
+}
+
+function determineNextStatusOfAliveCell(aliveNeighbours, cellStatus) {
+    return shouldCellSurvive(aliveNeighbours) ? cellStatus : shouldCellDie(aliveNeighbours) ? 0 : cellStatus;
+}
+
+export function determineIfReproductionOccurs(aliveNeighbours) {
+    return aliveNeighbours == thresholdForReproduction ? 1 : 0;
 }
 
 function shouldCellSurvive(aliveNeighbours) {
