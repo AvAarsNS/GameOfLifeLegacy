@@ -1,8 +1,10 @@
 const {
     isTheCellAlive,
     determineIfThereIsUnderpopulation, 
-    determineIfReproductionOccurs, 
+    deadCellCanReproduce, 
     determineIfThereIsOvercrowding,
+    ALIVE,
+    DEAD,
 } = require('../../src/gameoflife');
 
 describe(`This is a test suite for a finite version of Conways Game of Life. 
@@ -15,6 +17,14 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });
         it('▓ -> alive cell', () => {
             expect(isTheCellAlive(1)).toEqual(true);        
+        });
+    });
+    describe('Internally, the stat of a cell is denoted by a number', () => {
+        it('An alive cell should be denoted by a 1', () => {
+            expect(ALIVE).toEqual(1);
+        });
+        it('A dead cell should be denoted by a 0', () => {
+            expect(DEAD).toEqual(0);
         });
     });
     describe(`
@@ -36,10 +46,10 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });    
         describe(`On the other hand, reproduction causes a cell to become alive. This only happens when`, () => {
             it('exactly 3 neighbours are alive', () => {
-                expect(determineIfReproductionOccurs(3)).toEqual(true)
+                expect(deadCellCanReproduce(3)).toEqual(ALIVE);
             });
             it('and not when there are e.g. 4 cells alive', () => {
-                expect(determineIfReproductionOccurs(4)).toEqual(false)
+                expect(deadCellCanReproduce(4)).toEqual(DEAD);
             });
         });    
         describe('And lastly we have overcrowding, which also leads to the death of a cell. This happens when', () => {
