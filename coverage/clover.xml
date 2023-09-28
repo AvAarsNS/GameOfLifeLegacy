@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695808645827" clover="3.2.0">
-  <project timestamp="1695808645827" name="All files">
-    <metrics statements="34" coveredstatements="30" conditionals="36" coveredconditionals="36" methods="21" coveredmethods="17" elements="91" coveredelements="83" complexity="0" loc="34" ncloc="34" packages="2" files="2" classes="2"/>
+<coverage generated="1695886113906" clover="3.2.0">
+  <project timestamp="1695886113906" name="All files">
+    <metrics statements="37" coveredstatements="37" conditionals="36" coveredconditionals="36" methods="20" coveredmethods="20" elements="93" coveredelements="93" complexity="0" loc="37" ncloc="37" packages="2" files="2" classes="2"/>
     <package name="src">
-      <metrics statements="30" coveredstatements="26" conditionals="36" coveredconditionals="36" methods="21" coveredmethods="17"/>
-      <file name="gameoflife.js" path="C:\Katas\GameOfLife\src\gameoflife.js">
-        <metrics statements="30" coveredstatements="26" conditionals="36" coveredconditionals="36" methods="21" coveredmethods="17"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="22" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="34" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="38" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="42" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="46" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="50" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="54" count="27" type="stmt"/>
-        <line num="55" count="27" type="stmt"/>
-        <line num="59" count="27" type="stmt"/>
-        <line num="63" count="4" type="stmt"/>
-        <line num="67" count="3" type="stmt"/>
-        <line num="71" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="72" count="4" type="stmt"/>
-        <line num="73" count="4" type="stmt"/>
-        <line num="77" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="78" count="2" type="stmt"/>
-        <line num="79" count="2" type="stmt"/>
-        <line num="83" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="87" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
+      <metrics statements="29" coveredstatements="29" conditionals="36" coveredconditionals="36" methods="20" coveredmethods="20"/>
+      <file name="gameoflife.js" path="C:\Repos\Katas\GameOfLifeLegacy\src\gameoflife.js">
+        <metrics statements="29" coveredstatements="29" conditionals="36" coveredconditionals="36" methods="20" coveredmethods="20"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="10" count="47" type="stmt"/>
+        <line num="11" count="47" type="stmt"/>
+        <line num="22" count="47" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="47" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="34" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="38" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="42" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="46" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="50" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="54" count="141" type="stmt"/>
+        <line num="55" count="141" type="stmt"/>
+        <line num="59" count="141" type="stmt"/>
+        <line num="63" count="19" type="stmt"/>
+        <line num="67" count="14" type="stmt"/>
+        <line num="70" count="46" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="16" type="stmt"/>
+        <line num="72" count="30" type="stmt"/>
+        <line num="76" count="32" type="cond" truecount="2" falsecount="0"/>
+        <line num="80" count="16" type="cond" truecount="4" falsecount="0"/>
+        <line num="81" count="6" type="stmt"/>
+        <line num="82" count="10" type="stmt"/>
+        <line num="86" count="10" type="stmt"/>
+        <line num="87" count="38" type="stmt"/>
+        <line num="88" count="38" type="stmt"/>
       </file>
     </package>
     <package name="test.doubles">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="stubs.js" path="C:\Katas\GameOfLife\test\doubles\stubs.js">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="stubs.js" path="C:\Repos\Katas\GameOfLifeLegacy\test\doubles\stubs.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
       </file>
     </package>
   </project>

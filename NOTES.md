@@ -50,10 +50,13 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 - determineNextStatusOfCell
 
 ### Improvement 2: improve readability
-- Improve determineNextStatusOfCell
--- Split into dead and alive versions
--- apply Guard Clauses
--- Create/update unit tests
--- Update component tests
+✅ -- Improve determineNextStatusOfCell
+✅ -- Split into dead and alive versions
+✅ -- apply Guard Clauses
+✅ -- Create/update unit tests
+✅ -- Update component tests
+✅ -- shouldCellDie should return Alive or Dead
+🙌- apply ALIVE / DEAD constants consequently
+- minimize duplication in 'isThereANeighbourAliveSomewhere' functions
 
 Homework 4: Try to migrate to TypeScript
