@@ -6,57 +6,35 @@ export function isTheCellAlive(cell) {
     return cell == ALIVE
 }
 
-export function determineTheAmountOfAliveNeighbours(universe, cellRow, cellColumn) {
-    let numberOfNeiboursAlive = 0
-    return numberOfNeiboursAlive = isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn) 
-    + isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) 
-    + isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn)
-    + isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn)
-    + isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn)
-    + isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn)
-    + isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn)
-    + isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn)
+export function isThereANeighbourAlive(universe, row, col) {
+    if (isCellInUniverse(row, col, universe)) {
+        return universe[row][col] === ALIVE;
+    }
+    return false;
 }
 
-export function isThereANeighbourAliveOnTheRight(universe, cellRow, cellColumn) {
-    return universe[cellRow][cellColumn + 1] == ALIVE ? ALIVE : DEAD;
+export function isCellInUniverse(row, col, universe) {
+    return row >= 0 && col >= 0 && row < universe.length && col < universe[0].length;
 }
 
-export function isThereANeighbourAliveOnTheLeft(universe, cellRow, cellColumn) {
-    return universe[cellRow][cellColumn - 1] == ALIVE ? ALIVE : DEAD;
+export function extractNeighbours(universe, row, col) {
+    const neighborOffsets = [
+        [-1, -1], [-1, 0], [-1, 1],
+        [0, -1],           [0, 1],
+        [1, -1], [1, 0], [1, 1]
+    ];
+
+    return neighborOffsets.flatMap(([dx, dy]) => {
+        const newRow = row + dx;
+        const newCol = col + dy;
+        return isCellInUniverse(newRow, newCol, universe) ? [universe[newRow][newCol]] : [];
+    });
 }
 
-export function isThereANeighbourAliveDownUnder(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueBelowThisRow(universe, cellRow) && universe[cellRow + 1][cellColumn] == ALIVE ? ALIVE : DEAD;
-}
 
-export function isThereANeighbourAliveDownUnderToTheRight(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueBelowThisRow(universe, cellRow) && universe[cellRow + 1][cellColumn + 1] == ALIVE ? ALIVE : DEAD;
-}
-
-export function isThereANeighbourAliveDownUnderToTheLeft(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueBelowThisRow(universe, cellRow) && universe[cellRow + 1][cellColumn - 1] == ALIVE ? ALIVE : DEAD;
-}
-
-export function isThereANeighbourAliveAboveToTheLeft(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueAboveThisRow(cellRow) && universe[cellRow - 1][cellColumn - 1] == ALIVE ? ALIVE : DEAD;
-}
-
-export function isThereANeighbourAliveAboveToTheRight(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueAboveThisRow(cellRow) && universe[cellRow - 1][cellColumn + 1] == ALIVE ? ALIVE : DEAD;
-}
-
-export function isThereANeighbourAliveRightAbove(universe, cellRow, cellColumn) {
-    return doesTheUniverseContinueAboveThisRow(cellRow) && universe[cellRow - 1][cellColumn] == ALIVE ? ALIVE : DEAD;
-}
-
-export function doesTheUniverseContinueBelowThisRow(universe, cellRow){
-    let cellRowInNormalNumbers = cellRow + 1
-    return universe.length > cellRowInNormalNumbers
-}
-
-export function doesTheUniverseContinueAboveThisRow(cellRow) {
-    return cellRow > 0
+export function determineTheAmountOfAliveNeighbours(universe, row, col) {
+    const neighbours = extractNeighbours(universe, row, col);
+    return neighbours.filter(neighbour => neighbour === ALIVE).length;
 }
 
 export function determineIfThereIsUnderpopulation(aliveNeighbours) {
