@@ -1,19 +1,14 @@
-const thresholdForReproduction = 3;
+const THRESHOLD_FOR_REPRODUCTION = 3;
+const THRESHOLD_FOR_UNDERPOPULATION = 2;
+const THRESHOLD_FOR_OVERCROWDING = 3;
 export const DEAD = 0;
 export const ALIVE = 1;
 
 export function isTheCellAlive(cell) {
-    return cell == ALIVE
+    return cell === ALIVE;
 }
 
-export function isThereANeighbourAlive(universe, row, col) {
-    if (isCellInUniverse(row, col, universe)) {
-        return universe[row][col] === ALIVE;
-    }
-    return false;
-}
-
-export function isCellInUniverse(row, col, universe) {
+export function isCoordinateInUniverse(universe, row, col) {
     return row >= 0 && col >= 0 && row < universe.length && col < universe[0].length;
 }
 
@@ -27,36 +22,38 @@ export function extractNeighbours(universe, row, col) {
     return neighborOffsets.flatMap(([dx, dy]) => {
         const newRow = row + dx;
         const newCol = col + dy;
-        return isCellInUniverse(newRow, newCol, universe) ? [universe[newRow][newCol]] : [];
+        return isCoordinateInUniverse(universe, newRow, newCol) ? [universe[newRow][newCol]] : [];
     });
 }
 
-
 export function determineTheAmountOfAliveNeighbours(universe, row, col) {
     const neighbours = extractNeighbours(universe, row, col);
-    return neighbours.filter(neighbour => neighbour === ALIVE).length;
+    return neighbours.filter(isTheCellAlive).length;
 }
 
 export function determineIfThereIsUnderpopulation(aliveNeighbours) {
-    return aliveNeighbours <= 1    
+    return aliveNeighbours < THRESHOLD_FOR_UNDERPOPULATION;    
 }
 
 export function determineIfThereIsOvercrowding(aliveNeighbours) {
-    return aliveNeighbours > 3
+    return aliveNeighbours > THRESHOLD_FOR_OVERCROWDING;
 }
+
 export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
-    if (cellStatus == ALIVE)
+    if (isTheCellAlive(cellStatus)) {
         return shouldCellDie(aliveNeighbours);
+    }
     return deadCellCanReproduce(aliveNeighbours);
 }
 
 export function deadCellCanReproduce(aliveNeighbours) {
-    return aliveNeighbours == thresholdForReproduction ? ALIVE : DEAD;
+    return aliveNeighbours === THRESHOLD_FOR_REPRODUCTION ? ALIVE : DEAD;
 }
 
 function shouldCellDie(aliveNeighbours) {
-    if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours))
+    if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours)) {
         return DEAD;
+    }
     return ALIVE;
 }
 

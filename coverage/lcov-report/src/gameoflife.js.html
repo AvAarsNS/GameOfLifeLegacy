@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.13% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/29</span>
+                <span class='fraction'>9/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/16</span>
+                <span class='fraction'>2/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.66% </span>
+                <span class="strong">30.76% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/15</span>
+                <span class='fraction'>4/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.92% </span>
+                <span class="strong">34.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/27</span>
+                <span class='fraction'>9/26</span>
             </div>
         
             
@@ -127,10 +127,9 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,13 +139,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,7 +152,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,8 +168,10 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,6 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,22 +191,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const thresholdForReproduction = 3;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const THRESHOLD_FOR_REPRODUCTION = 3;
+const THRESHOLD_FOR_UNDERPOPULATION = 2;
+const THRESHOLD_FOR_OVERCROWDING = 3;
 export const DEAD = 0;
 export const ALIVE = 1;
 &nbsp;
 export function isTheCellAlive(cell) {
-    return cell == ALIVE
+    return cell === ALIVE;
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >isThereANeighbourAlive(</span>universe, row, col) {
-<span class="cstat-no" title="statement not covered" >    if (isCellInUniverse(row, col, universe)) {</span>
-<span class="cstat-no" title="statement not covered" >        return universe[row][col] === ALIVE;</span>
-    }
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-}
-&nbsp;
-export function <span class="fstat-no" title="function not covered" >isCellInUniverse(</span>row, col, universe) {
+export function <span class="fstat-no" title="function not covered" >isCoordinateInUniverse(</span>universe, row, col) {
 <span class="cstat-no" title="statement not covered" >    return row &gt;= 0 &amp;&amp; col &gt;= 0 &amp;&amp; row &lt; universe.length &amp;&amp; col &lt; universe[0].length;</span>
 }
 &nbsp;
@@ -226,36 +215,38 @@ export function <span class="fstat-no" title="function not covered" >extractNeig
 <span class="cstat-no" title="statement not covered" >    return neighborOffsets.flatMap(<span class="fstat-no" title="function not covered" >([</span>dx, dy]) =&gt; {</span>
         const newRow = <span class="cstat-no" title="statement not covered" >row + dx;</span>
         const newCol = <span class="cstat-no" title="statement not covered" >col + dy;</span>
-<span class="cstat-no" title="statement not covered" >        return isCellInUniverse(newRow, newCol, universe) ? [universe[newRow][newCol]] : [];</span>
+<span class="cstat-no" title="statement not covered" >        return isCoordinateInUniverse(universe, newRow, newCol) ? [universe[newRow][newCol]] : [];</span>
     });
 }
 &nbsp;
-&nbsp;
 export function <span class="fstat-no" title="function not covered" >determineTheAmountOfAliveNeighbours(</span>universe, row, col) {
     const neighbours = <span class="cstat-no" title="statement not covered" >extractNeighbours(universe, row, col);</span>
-<span class="cstat-no" title="statement not covered" >    return neighbours.filter(<span class="fstat-no" title="function not covered" >ne</span>ighbour =&gt; <span class="cstat-no" title="statement not covered" >neighbour === ALIVE)</span>.length;</span>
+<span class="cstat-no" title="statement not covered" >    return neighbours.filter(isTheCellAlive).length;</span>
 }
 &nbsp;
 export function determineIfThereIsUnderpopulation(aliveNeighbours) {
-    return aliveNeighbours &lt;= 1    
+    return aliveNeighbours &lt; THRESHOLD_FOR_UNDERPOPULATION;    
 }
 &nbsp;
 export function determineIfThereIsOvercrowding(aliveNeighbours) {
-    return aliveNeighbours &gt; 3
+    return aliveNeighbours &gt; THRESHOLD_FOR_OVERCROWDING;
 }
+&nbsp;
 export function <span class="fstat-no" title="function not covered" >determineNextStatusOfCell(</span>cellStatus, aliveNeighbours) {
-<span class="cstat-no" title="statement not covered" >    if (cellStatus == ALIVE)</span>
+<span class="cstat-no" title="statement not covered" >    if (isTheCellAlive(cellStatus)) {</span>
 <span class="cstat-no" title="statement not covered" >        return shouldCellDie(aliveNeighbours);</span>
+    }
 <span class="cstat-no" title="statement not covered" >    return deadCellCanReproduce(aliveNeighbours);</span>
 }
 &nbsp;
 export function deadCellCanReproduce(aliveNeighbours) {
-    return aliveNeighbours == thresholdForReproduction ? ALIVE : DEAD;
+    return aliveNeighbours === THRESHOLD_FOR_REPRODUCTION ? ALIVE : DEAD;
 }
 &nbsp;
 function <span class="fstat-no" title="function not covered" >shouldCellDie(</span>aliveNeighbours) {
-<span class="cstat-no" title="statement not covered" >    if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours))</span>
+<span class="cstat-no" title="statement not covered" >    if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours)) {</span>
 <span class="cstat-no" title="statement not covered" >        return DEAD;</span>
+    }
 <span class="cstat-no" title="statement not covered" >    return ALIVE;</span>
 }
 &nbsp;
@@ -271,7 +262,7 @@ export function <span class="fstat-no" title="function not covered" >generateNex
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-29T08:21:11.465Z
+                at 2023-10-02T08:57:24.123Z
             </div>
         <script src="../prettify.js"></script>
         <script>
