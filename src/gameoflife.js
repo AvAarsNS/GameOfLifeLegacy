@@ -8,22 +8,35 @@ export function isTheCellAlive(cell) {
     return cell === ALIVE;
 }
 
+function isRowValid(universe, row) {
+    return row >= 0 && row < universe.length;
+}
+
+function isColumnValid(universe, col) {
+    return col >= 0 && col < universe[0].length;
+}
+
 export function isCoordinateInUniverse(universe, row, col) {
-    return row >= 0 && col >= 0 && row < universe.length && col < universe[0].length;
+    return isRowValid(universe, row) && isColumnValid(universe, col);
 }
 
 export function extractNeighbours(universe, row, col) {
-    const neighborOffsets = [
+    const neighbourOffsets = [
         [-1, -1], [-1, 0], [-1, 1],
         [0, -1],           [0, 1],
-        [1, -1], [1, 0], [1, 1]
+        [1, -1],  [1, 0],   [1, 1]
     ];
 
-    return neighborOffsets.flatMap(([dx, dy]) => {
-        const newRow = row + dx;
-        const newCol = col + dy;
-        return isCoordinateInUniverse(universe, newRow, newCol) ? [universe[newRow][newCol]] : [];
-    });
+    const neighbourCoordinates = neighbourOffsets
+        .map(([rowOffset, colOffset]) => [row + rowOffset, col + colOffset]);
+
+    const validNeighbourCoordinates = neighbourCoordinates
+        .filter(([neighbourRow, neighbourCol]) => isCoordinateInUniverse(universe, neighbourRow, neighbourCol));
+
+    const neighbouringCellValues = validNeighbourCoordinates
+        .map(([neighbourRow, neighbourCol]) => universe[neighbourRow][neighbourCol]);
+
+    return neighbouringCellValues;
 }
 
 export function determineTheAmountOfAliveNeighbours(universe, row, col) {
