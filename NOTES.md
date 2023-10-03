@@ -58,7 +58,6 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 ✅ -- shouldCellDie should return Alive or Dead
 ✅ - apply ALIVE / DEAD constants consequently
 ✅ - minimize duplication in 'isThereANeighbourAliveSomewhere' functions
-🙌 -- Make functions more readable
-   -- Add test to make sure guardian is used when checking for a cell outside the universe
+✅ -- Make functions more readable
 
-Homework 4: Try to migrate to TypeScript
+🙌 Homework 4: Try to migrate to TypeScript

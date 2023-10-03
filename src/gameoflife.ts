@@ -4,24 +4,27 @@ const THRESHOLD_FOR_OVERCROWDING = 3;
 export const DEAD = 0;
 export const ALIVE = 1;
 
-export function isTheCellAlive(cell) {
+type CellStatus = typeof DEAD | typeof ALIVE;
+type Universe = CellStatus[][];
+
+export function isTheCellAlive(cell: CellStatus): boolean {
     return cell === ALIVE;
 }
 
-function isRowValid(universe, row) {
+function isRowValid(universe: Universe, row: number): boolean {
     return row >= 0 && row < universe.length;
 }
 
-function isColumnValid(universe, col) {
+function isColumnValid(universe: Universe, col: number): boolean {
     return col >= 0 && col < universe[0].length;
 }
 
-export function isCoordinateInUniverse(universe, row, col) {
+export function isCoordinateInUniverse(universe: Universe, row: number, col: number): boolean {
     return isRowValid(universe, row) && isColumnValid(universe, col);
 }
 
-export function extractNeighbours(universe, row, col) {
-    const neighbourOffsets = [
+export function extractNeighbours(universe: Universe, row: number, col: number): CellStatus[] {
+    const neighbourOffsets: number[][] = [
         [-1, -1], [-1, 0], [-1, 1],
         [0, -1],           [0, 1],
         [1, -1],  [1, 0],   [1, 1]
@@ -39,38 +42,38 @@ export function extractNeighbours(universe, row, col) {
     return neighbouringCellValues;
 }
 
-export function determineTheAmountOfAliveNeighbours(universe, row, col) {
+export function determineTheAmountOfAliveNeighbours(universe: Universe, row: number, col: number): number {
     const neighbours = extractNeighbours(universe, row, col);
     return neighbours.filter(isTheCellAlive).length;
 }
 
-export function determineIfThereIsUnderpopulation(aliveNeighbours) {
+export function determineIfThereIsUnderpopulation(aliveNeighbours: number): boolean {
     return aliveNeighbours < THRESHOLD_FOR_UNDERPOPULATION;    
 }
 
-export function determineIfThereIsOvercrowding(aliveNeighbours) {
+export function determineIfThereIsOvercrowding(aliveNeighbours: number): boolean {
     return aliveNeighbours > THRESHOLD_FOR_OVERCROWDING;
 }
 
-export function determineNextStatusOfCell(cellStatus, aliveNeighbours) {
+export function determineNextStatusOfCell(cellStatus: CellStatus, aliveNeighbours: number): CellStatus {
     if (isTheCellAlive(cellStatus)) {
         return shouldCellDie(aliveNeighbours);
     }
     return deadCellCanReproduce(aliveNeighbours);
 }
 
-export function deadCellCanReproduce(aliveNeighbours) {
+export function deadCellCanReproduce(aliveNeighbours: number): CellStatus {
     return aliveNeighbours === THRESHOLD_FOR_REPRODUCTION ? ALIVE : DEAD;
 }
 
-function shouldCellDie(aliveNeighbours) {
+function shouldCellDie(aliveNeighbours: number): CellStatus {
     if (determineIfThereIsUnderpopulation(aliveNeighbours) || determineIfThereIsOvercrowding(aliveNeighbours)) {
         return DEAD;
     }
     return ALIVE;
 }
 
-export function generateNextTick(currentUniverse) {
+export function generateNextTick(currentUniverse: Universe): Universe {
     return currentUniverse.map((row, rowIndex) => row.map((cell, columnIndex) => {
         const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
