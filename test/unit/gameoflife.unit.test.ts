@@ -1,3 +1,5 @@
+import { threeByThreeUniverse } from "../doubles/stubs";
+
 const {
     isTheCellAlive,
     determineIfThereIsUnderpopulation, 
@@ -5,6 +7,9 @@ const {
     determineIfThereIsOvercrowding,
     ALIVE,
     DEAD,
+    createUniverse,
+    isRowValid,
+    isColumnValid
 } = require('../../src/gameoflife');
 
 const {
@@ -35,6 +40,61 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
         });
         it('A dead cell should be denoted by a 0', () => {
             expect(DEAD).toEqual(0);
+        });
+    });
+    // TODO: it seems that the tests below come from out of the blue. Seems like units are missing here.
+
+    describe('The next concept is the Universe. The cells mentioned above sort of live in this universe. This is a square grid. We have a function that can initialize a universe, which..', () => {
+        it('should create a universe with the specified number of rows and columns', () => {
+            const rows = 3;
+            const columns = 4;
+            const universe = createUniverse(rows, columns);
+            expect(universe.length).toEqual(rows);
+            universe.forEach((row: string | any[]) => expect(row.length).toEqual(columns));
+        });
+
+        it('and should create a universe with all cells being dead', () => {
+            const rows = 3;
+            const columns = 4;
+            const universe = createUniverse(rows, columns);
+            universe.forEach((row: any[]) => row.forEach(cell => expect(cell).toEqual(0)));
+        });
+    });
+    describe('Now that we have a universe, we need to eventually be able to determine how many alive neighbours a cell has, so that we can determine the next status of that cell', () => {
+        describe('The first step in this process is finding a specific cell in the universe. This is done with coordinates. These need to be valid', () => {
+            describe('We first check the coordinate for the row. This..', () => {
+                const universe = threeByThreeUniverse;
+                it('should return true for a valid row index', () => {
+                    expect(isRowValid(universe, 0)).toEqual(true);
+                    expect(isRowValid(universe, 1)).toEqual(true);
+                    expect(isRowValid(universe, 2)).toEqual(true);
+                });
+
+                it('should return false for a negative row index', () => {
+                    expect(isRowValid(universe, -1)).toEqual(false);
+                });
+
+                it('should return false for a row index greater than or equal to the number of rows in the universe', () => {
+                    expect(isRowValid(universe, 3)).toEqual(false);
+                    expect(isRowValid(universe, 4)).toEqual(false);
+                });
+            });
+            describe('And then the column validation, which..', () => {
+                const universe = threeByThreeUniverse;
+                it('should return true for a valid column index', () => {
+                    expect(isColumnValid(universe, 0)).toEqual(true);
+                    expect(isColumnValid(universe, 1)).toEqual(true);
+                });
+
+                it('should return false for a negative column index', () => {
+                    expect(isColumnValid(universe, -1)).toEqual(false);
+                });
+
+                it('should return false for a column index greater than or equal to the number of columns in the universe', () => {
+                    expect(isColumnValid(universe, 2)).toEqual(true);
+                    expect(isColumnValid(universe, 3)).toEqual(false);
+                });
+                });
         });
     });
     describe(`

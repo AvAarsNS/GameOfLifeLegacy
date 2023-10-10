@@ -6,3 +6,8 @@ export const moreThanThreeNeighbours = 4;
 export const notThreeNeighbours = 4;
 export const atLeastFourNeighbours = 4;
 export const lessThanFourNeighbours = 3;
+export const threeByThreeUniverse = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+];
