@@ -1,16 +1,17 @@
 import { threeByThreeUniverse } from "../doubles/stubs";
 
 const {
-    isTheCellAlive,
-    determineIfThereIsUnderpopulation, 
-    deadCellCanReproduce, 
-    determineIfThereIsOvercrowding,
-    ALIVE,
-    DEAD,
-    createUniverse,
-    isRowValid,
-    isColumnValid
-} = require('../../src/gameoflife');
+  isTheCellAlive,
+  determineIfThereIsUnderpopulation,
+  deadCellCanReproduce,
+  determineIfThereIsOvercrowding,
+  ALIVE,
+  DEAD,
+  createUniverse,
+  isRowValid,
+  isColumnValid,
+  isCoordinateInUniverse,
+} = require("../../src/gameoflife");
 
 const {
     zeroNeighbours,
@@ -94,7 +95,23 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
                     expect(isColumnValid(universe, 2)).toEqual(true);
                     expect(isColumnValid(universe, 3)).toEqual(false);
                 });
+            });
+            describe("Then we check both coordinates", () => {
+                const universe = threeByThreeUniverse
+
+                it("should return true for a coordinate within the bounds of the universe", () => {
+                expect(isCoordinateInUniverse(universe, 0, 0)).toBe(true);
+                expect(isCoordinateInUniverse(universe, 1, 1)).toBe(true);
+                expect(isCoordinateInUniverse(universe, 2, 2)).toBe(true);
                 });
+
+                it("should return false for a coordinate outside the bounds of the universe", () => {
+                expect(isCoordinateInUniverse(universe, -1, 0)).toBe(false);
+                expect(isCoordinateInUniverse(universe, 0, -1)).toBe(false);
+                expect(isCoordinateInUniverse(universe, 3, 0)).toBe(false);
+                expect(isCoordinateInUniverse(universe, 0, 3)).toBe(false);
+                });
+            });
         });
     });
     describe(`

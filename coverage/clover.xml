@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696923670688" clover="3.2.0">
-  <project timestamp="1696923670688" name="All files">
-    <metrics statements="53" coveredstatements="33" conditionals="12" coveredconditionals="6" methods="18" coveredmethods="7" elements="83" coveredelements="46" complexity="0" loc="53" ncloc="53" packages="2" files="2" classes="2"/>
+<coverage generated="1697095359995" clover="3.2.0">
+  <project timestamp="1697095359995" name="All files">
+    <metrics statements="53" coveredstatements="34" conditionals="12" coveredconditionals="8" methods="18" coveredmethods="8" elements="83" coveredelements="50" complexity="0" loc="53" ncloc="53" packages="2" files="2" classes="2"/>
     <package name="src">
-      <metrics statements="44" coveredstatements="24" conditionals="12" coveredconditionals="6" methods="18" coveredmethods="7"/>
-      <file name="gameoflife.ts" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\src\gameoflife.ts">
-        <metrics statements="44" coveredstatements="24" conditionals="12" coveredconditionals="6" methods="18" coveredmethods="7"/>
+      <metrics statements="44" coveredstatements="25" conditionals="12" coveredconditionals="8" methods="18" coveredmethods="8"/>
+      <file name="gameoflife.ts" path="C:\Kata\GameOfLifeLegacy\GameOfLifeLegacy\src\gameoflife.ts">
+        <metrics statements="44" coveredstatements="25" conditionals="12" coveredconditionals="8" methods="18" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -16,11 +16,11 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="13" type="cond" truecount="2" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="10" type="cond" truecount="2" falsecount="0"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="7" type="cond" truecount="2" falsecount="0"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
@@ -54,7 +54,7 @@
     </package>
     <package name="test.doubles">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="stubs.ts" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\test\doubles\stubs.ts">
+      <file name="stubs.ts" path="C:\Kata\GameOfLifeLegacy\GameOfLifeLegacy\test\doubles\stubs.ts">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
