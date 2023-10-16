@@ -60,4 +60,8 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 ✅ - minimize duplication in 'isThereANeighbourAliveSomewhere' functions
 ✅ -- Make functions more readable
 
-🙌 Homework 4: Try to migrate to TypeScript
+✅ Homework 4: Try to migrate to TypeScript
+
+🔍 A warning about Jest is visible in the terminal. Don't know how to solve this and this does not seem a priority for now.
+
+🙌 Homework 5: refactor testsuites

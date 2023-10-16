@@ -11,11 +11,15 @@ export function isTheCellAlive(cell: CellStatus): boolean {
     return cell === ALIVE;
 }
 
-function isRowValid(universe: Universe, row: number): boolean {
+export function createUniverse(rows: number, columns: number): Universe {
+    return Array(rows).fill(Array(columns).fill(DEAD));
+}
+
+export function isRowValid(universe: Universe, row: number): boolean {
     return row >= 0 && row < universe.length;
 }
 
-function isColumnValid(universe: Universe, col: number): boolean {
+export function isColumnValid(universe: Universe, col: number): boolean {
     return col >= 0 && col < universe[0].length;
 }
 

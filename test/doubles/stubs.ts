@@ -32,3 +32,8 @@ export const noAliveNeighbours: Test = {
     row: 0,
     column: 0,
 };
+export const threeByThreeUniverse = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+];

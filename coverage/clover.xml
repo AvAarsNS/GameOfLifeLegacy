@@ -50,7 +50,7 @@
     </package>
     <package name="test.doubles">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="stubs.ts" path="C:\Katas\GameOfLife\test\doubles\stubs.ts">
+      <file name="stubs.ts" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\test\doubles\stubs.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
