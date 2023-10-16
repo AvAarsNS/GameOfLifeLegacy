@@ -1,27 +1,24 @@
-import { threeByThreeUniverse } from "../doubles/stubs";
-
-const {
-  isTheCellAlive,
-  determineIfThereIsUnderpopulation,
-  deadCellCanReproduce,
-  determineIfThereIsOvercrowding,
-  ALIVE,
-  DEAD,
-  createUniverse,
-  isRowValid,
-  isColumnValid,
-  isCoordinateInUniverse,
-} = require("../../src/gameoflife");
-
-const {
-    zeroNeighbours,
+import { isTheCellAlive,
+    determineIfThereIsUnderpopulation,
+    deadCellCanReproduce,
+    determineIfThereIsOvercrowding,
+    ALIVE,
+    DEAD,
+    createUniverse,
+    isRowValid,
+    isColumnValid,
+    isCoordinateInUniverse,
+    extractNeighbours, 
+    determineTheAmountOfAliveNeighbours,
+    CellStatus} from "../../src/gameoflife";
+import { zeroNeighbours,
     oneNeighbour,
     twoNeighbours,
     threeNeighbours,
     notThreeNeighbours,
     atLeastFourNeighbours,
-    lessThanFourNeighbours
-} = require('../doubles/stubs');
+    lessThanFourNeighbours,
+    fiveByFiveUniverse, threeByThreeUniverse, rowOfDeadCells, rowWith2AliveCells, rowWith4AliveCells } from "../doubles/stubs";
 
 describe(`This is a test suite for a finite version of Conways Game of Life. 
     The rules of the game will be explained below. The goal of this finite version is to create the next Tick of the Universe.
@@ -63,7 +60,7 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
     });
     describe('Now that we have a universe, we need to eventually be able to determine how many alive neighbours a cell has, so that we can determine the next status of that cell', () => {
         describe('The first step in this process is finding a specific cell in the universe. This is done with coordinates. These need to be valid', () => {
-            describe('We first check the coordinate for the row. This..', () => {
+            describe('We first check the coordinate for the row. This', () => {
                 const universe = threeByThreeUniverse;
                 it('should return true for a valid row index', () => {
                     expect(isRowValid(universe, 0)).toEqual(true);
@@ -112,6 +109,62 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
                 expect(isCoordinateInUniverse(universe, 0, 3)).toBe(false);
                 });
             });
+        });
+        
+        describe('Then we need to find all the neighbours of a cell, to be able to determine if they are alive or dead.', () => {
+            describe(`When we have a universe that looks like this:
+            ▓|░|▓|░|▓
+            ---------
+            ░|▓|░|▓|░
+            ---------
+            ░|░|░|░|░
+            ---------
+            ░|▓|▓|▓|░
+            ---------
+            ▓|▓|▓|░|░
+            When we check the neighbours of:`, () => {
+                it('the center cell (2, 2), we should get the 8 surrounding cells', () => {
+                    const universe = fiveByFiveUniverse;
+                    const expectedNeighbours = [1, 0, 1, 0, 0, 1, 1, 1];
+                    expect(extractNeighbours(universe, 2, 2)).toEqual(expectedNeighbours);
+                });
+                it('the top left cell (0, 0), we should get the 3 surrounding cells', () => {
+                    const universe = fiveByFiveUniverse;
+                    const expectedNeighbours = [0, 0, 1];
+                    expect(extractNeighbours(universe, 0, 0)).toEqual(expectedNeighbours);
+                });
+                it('the top center cell (0, 2), we should get the 5 surrounding cells', () => {
+                    const universe = fiveByFiveUniverse;
+                    const expectedNeighbours = [0, 0, 1, 0, 1];
+                    expect(extractNeighbours(universe, 0, 2)).toEqual(expectedNeighbours);
+                });
+                it('the right center cell (2, 4), we should get the 5 surrounding cells', () => {
+                    const universe = fiveByFiveUniverse;
+                    const expectedNeighbours = [1, 0, 0, 1, 0];
+                    expect(extractNeighbours(universe, 2, 4)).toEqual(expectedNeighbours);
+                });
+                it('the cell next to the bottom left cell (4, 1), we should get the 5 surrounding cells', () => {
+                    const universe = fiveByFiveUniverse;
+                    const expectedNeighbours = [0, 1, 1, 1, 1];
+                    expect(extractNeighbours(universe, 4, 1)).toEqual(expectedNeighbours);
+                });
+            });
+        });
+        describe('With this information, we can check the amount of alive neighbours', () => {
+            describe('With the following neighbours we expect the following amount of alive neighbours', () => {
+                it('░|░|░|░|░ -> 0', () => {
+                    expect(determineTheAmountOfAliveNeighbours(rowOfDeadCells)).toBe(0);
+                });
+                it('░|▓|░|▓|░|░ -> 2', () => {
+                    expect(determineTheAmountOfAliveNeighbours(rowWith2AliveCells)).toBe(2);
+                });
+                it('▓|▓|▓|▓ -> 4', () => {
+                    expect(determineTheAmountOfAliveNeighbours(rowWith4AliveCells)).toBe(4);
+                });
+                it('No neighbours -> 0', () => {
+                    expect(determineTheAmountOfAliveNeighbours([])).toBe(0);
+                });
+            })
         });
     });
     describe(`

@@ -46,8 +46,7 @@ export function extractNeighbours(universe: Universe, row: number, col: number):
     return neighbouringCellValues;
 }
 
-export function determineTheAmountOfAliveNeighbours(universe: Universe, row: number, col: number): number {
-    const neighbours = extractNeighbours(universe, row, col);
+export function determineTheAmountOfAliveNeighbours(neighbours: CellStatus[]): number {
     return neighbours.filter(isTheCellAlive).length;
 }
 
@@ -79,7 +78,8 @@ function shouldCellDie(aliveNeighbours: number): CellStatus {
 
 export function generateNextTick(currentUniverse: Universe): Universe {
     return currentUniverse.map((row, rowIndex) => row.map((cell, columnIndex) => {
-        const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);
+        const neighbours = extractNeighbours(currentUniverse, rowIndex, columnIndex);
+        const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(neighbours);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
     }));
 }

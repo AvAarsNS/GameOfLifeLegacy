@@ -1,4 +1,4 @@
-import { Universe } from "../../src/gameoflife";
+import { CellStatus, Universe } from "../../src/gameoflife";
 
 export const zeroNeighbours = 0;
 export const oneNeighbour = 1;
@@ -32,8 +32,20 @@ export const noAliveNeighbours: Test = {
     row: 0,
     column: 0,
 };
-export const threeByThreeUniverse = [
+export const threeByThreeUniverse: Universe = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
 ];
+
+export const fiveByFiveUniverse: Universe = [
+    [1, 0, 1, 0, 1],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 0, 0]
+];
+
+export const rowOfDeadCells = [0,0,0,0,0] as CellStatus[];
+export const rowWith2AliveCells = [0,1,0,1,0,0] as CellStatus[];
+export const rowWith4AliveCells = [1,1,1,1] as CellStatus[];

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">49.01% </span>
+                <span class="strong">78.43% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/51</span>
+                <span class='fraction'>40/51</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.44% </span>
+                <span class="strong">72.22% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/18</span>
+                <span class='fraction'>13/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.81% </span>
+                <span class="strong">77.27% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/44</span>
+                <span class='fraction'>34/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -158,7 +158,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,39 +166,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -231,6 +230,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const THRESHOLD_FOR_REPRODUCTION = 3;
@@ -239,8 +239,8 @@ const THRESHOLD_FOR_OVERCROWDING = 3;
 export const DEAD = 0;
 export const ALIVE = 1;
 &nbsp;
-type CellStatus = typeof DEAD | typeof ALIVE;
-type Universe = CellStatus[][];
+export type CellStatus = typeof DEAD | typeof ALIVE;
+export type Universe = CellStatus[][];
 &nbsp;
 export function isTheCellAlive(cell: CellStatus): boolean {
     return cell === ALIVE;
@@ -262,28 +262,27 @@ export function isCoordinateInUniverse(universe: Universe, row: number, col: num
     return isRowValid(universe, row) &amp;&amp; isColumnValid(universe, col);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >extractNeighbours(</span>universe: Universe, row: number, col: number): CellStatus[] {
-    const neighbourOffsets: number[][] = <span class="cstat-no" title="statement not covered" >[</span>
+export function extractNeighbours(universe: Universe, row: number, col: number): CellStatus[] {
+    const neighbourOffsets: number[][] = [
         [-1, -1], [-1, 0], [-1, 1],
         [0, -1],           [0, 1],
         [1, -1],  [1, 0],   [1, 1]
     ];
 &nbsp;
-    const neighbourCoordinates = <span class="cstat-no" title="statement not covered" >neighbourOffsets</span>
-        .map(<span class="fstat-no" title="function not covered" >([</span>rowOffset<span class="cstat-no" title="statement not covered" >, c</span>olOffset<span class="cstat-no" title="statement not covered" >])</span> =&gt; <span class="cstat-no" title="statement not covered" >[row + rowOffset, col + colOffset]);</span>
+    const neighbourCoordinates = neighbourOffsets
+        .map(([rowOffset, colOffset]) =&gt; [row + rowOffset, col + colOffset]);
 &nbsp;
-    const validNeighbourCoordinates = <span class="cstat-no" title="statement not covered" >neighbourCoordinates</span>
-        .filter(<span class="fstat-no" title="function not covered" >([</span>neighbourRow<span class="cstat-no" title="statement not covered" >, n</span>eighbourCol<span class="cstat-no" title="statement not covered" >])</span> =&gt; <span class="cstat-no" title="statement not covered" >isCoordinateInUniverse(universe, neighbourRow, neighbourCol));</span>
+    const validNeighbourCoordinates = neighbourCoordinates
+        .filter(([neighbourRow, neighbourCol]) =&gt; isCoordinateInUniverse(universe, neighbourRow, neighbourCol));
 &nbsp;
-    const neighbouringCellValues = <span class="cstat-no" title="statement not covered" >validNeighbourCoordinates</span>
-        .map(<span class="fstat-no" title="function not covered" >([</span>neighbourRow<span class="cstat-no" title="statement not covered" >, n</span>eighbourCol<span class="cstat-no" title="statement not covered" >])</span> =&gt; <span class="cstat-no" title="statement not covered" >universe[neighbourRow][neighbourCol]);</span>
+    const neighbouringCellValues = validNeighbourCoordinates
+        .map(([neighbourRow, neighbourCol]) =&gt; universe[neighbourRow][neighbourCol]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return neighbouringCellValues;</span>
+    return neighbouringCellValues;
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >determineTheAmountOfAliveNeighbours(</span>universe: Universe, row: number, col: number): number {
-    const neighbours = <span class="cstat-no" title="statement not covered" >extractNeighbours(universe, row, col);</span>
-<span class="cstat-no" title="statement not covered" >    return neighbours.filter(isTheCellAlive).length;</span>
+export function determineTheAmountOfAliveNeighbours(neighbours: CellStatus[]): number {
+    return neighbours.filter(isTheCellAlive).length;
 }
 &nbsp;
 export function determineIfThereIsUnderpopulation(aliveNeighbours: number): boolean {
@@ -314,7 +313,8 @@ function <span class="fstat-no" title="function not covered" >shouldCellDie(</sp
 &nbsp;
 export function <span class="fstat-no" title="function not covered" >generateNextTick(</span>currentUniverse: Universe): Universe {
 <span class="cstat-no" title="statement not covered" >    return currentUniverse.map(<span class="fstat-no" title="function not covered" >(r</span>ow, rowIndex) =&gt; <span class="cstat-no" title="statement not covered" >row.map(<span class="fstat-no" title="function not covered" >(c</span>ell, columnIndex) =&gt; {</span></span>
-        const amountOfAliveNeighbours = <span class="cstat-no" title="statement not covered" >determineTheAmountOfAliveNeighbours(currentUniverse, rowIndex, columnIndex);</span>
+        const neighbours = <span class="cstat-no" title="statement not covered" >extractNeighbours(currentUniverse, rowIndex, columnIndex);</span>
+        const amountOfAliveNeighbours = <span class="cstat-no" title="statement not covered" >determineTheAmountOfAliveNeighbours(neighbours);</span>
 <span class="cstat-no" title="statement not covered" >        return determineNextStatusOfCell(cell, amountOfAliveNeighbours);</span>
     }));
 }
@@ -325,7 +325,7 @@ export function <span class="fstat-no" title="function not covered" >generateNex
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-04T09:17:47.310Z
+                at 2023-10-16T08:30:40.380Z
             </div>
         <script src="../prettify.js"></script>
         <script>
