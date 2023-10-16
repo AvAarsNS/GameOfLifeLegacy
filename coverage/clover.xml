@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696318190911" clover="3.2.0">
-  <project timestamp="1696318190912" name="All files">
+<coverage generated="1696411067329" clover="3.2.0">
+  <project timestamp="1696411067329" name="All files">
     <metrics statements="48" coveredstatements="48" conditionals="12" coveredconditionals="12" methods="17" coveredmethods="17" elements="77" coveredelements="77" complexity="0" loc="48" ncloc="48" packages="2" files="2" classes="2"/>
     <package name="src">
       <metrics statements="40" coveredstatements="40" conditionals="12" coveredconditionals="12" methods="17" coveredmethods="17"/>
-      <file name="gameoflife.ts" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\src\gameoflife.ts">
+      <file name="gameoflife.ts" path="C:\Katas\GameOfLife\src\gameoflife.ts">
         <metrics statements="40" coveredstatements="40" conditionals="12" coveredconditionals="12" methods="17" coveredmethods="17"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
@@ -50,7 +50,7 @@
     </package>
     <package name="test.doubles">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="stubs.ts" path="C:\Users\mathijs.coenen_nsp\GameOfLifeLegacy\test\doubles\stubs.ts">
+      <file name="stubs.ts" path="C:\Katas\GameOfLife\test\doubles\stubs.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>

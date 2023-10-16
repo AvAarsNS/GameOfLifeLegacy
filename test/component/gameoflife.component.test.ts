@@ -3,7 +3,7 @@ import { determineTheAmountOfAliveNeighbours,
         DEAD,
         ALIVE} 
         from '../../src/gameoflife';
-import { moreThanThreeNeighbours, oneNeighbour, threeNeighbours, twoNeighbours } from '../doubles/stubs';
+import { NO_CELLS_ALIVE, TOP_LEFT, moreThanThreeNeighbours, noAliveNeighbours, oneNeighbour, threeNeighbours, twoNeighbours } from '../doubles/stubs';
 
 describe(`This is the component test suite for a finite version of Conways Game of Life.
     The components in this suite all revolve around the functionality of a Tick. Which causes a Universe to proceed to its next state.
@@ -25,11 +25,12 @@ describe(`This is the component test suite for a finite version of Conways Game 
                 });
             });
             describe(`And when our universe consists of multiple rows`, () => {
-                it(`
-        → ▓|░|░
-          -----
-          ░|░|░ this cell has no alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1,0,0],[0,0,0]],0,0)).toEqual(0)
+                it(noAliveNeighbours.render + ' this cell has no alive neighbours', () => {
+                    expect(determineTheAmountOfAliveNeighbours(
+                        noAliveNeighbours.universe,
+                        TOP_LEFT.row,
+                        TOP_LEFT.column)
+                    ).toEqual(NO_CELLS_ALIVE);
                 });
                 it(`
         → ▓|▓|░

@@ -4,8 +4,8 @@ const THRESHOLD_FOR_OVERCROWDING = 3;
 export const DEAD = 0;
 export const ALIVE = 1;
 
-type CellStatus = typeof DEAD | typeof ALIVE;
-type Universe = CellStatus[][];
+export type CellStatus = typeof DEAD | typeof ALIVE;
+export type Universe = CellStatus[][];
 
 export function isTheCellAlive(cell: CellStatus): boolean {
     return cell === ALIVE;
