@@ -64,4 +64,21 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 
 🔍 A warning about Jest is visible in the terminal. Don't know how to solve this and this does not seem a priority for now.
 
-🙌 Homework 5: refactor testsuites
+✅ Homework 5: refactor testsuites
+
+# API
+
+## POST start game
+✅ - Create the API and the POST call scaffolding
+✅ - Create a test for the POST call, for a simple universe with ReadyAPI
+
+{
+  "width": 20,
+  "height": 20,
+  "pattern": "GLIDER"
+}
+
+🙌 - Component: start a new game!
+-- Dimensions
+-- Glider
+-- Blinker

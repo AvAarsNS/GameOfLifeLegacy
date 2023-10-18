@@ -3,73 +3,12 @@ import { determineTheAmountOfAliveNeighbours,
         DEAD,
         ALIVE} 
         from '../../src/gameoflife';
-import { NO_CELLS_ALIVE, TOP_LEFT, moreThanThreeNeighbours, noAliveNeighbours, oneNeighbour, threeNeighbours, twoNeighbours } from '../doubles/stubs';
+import { NO_CELLS_ALIVE, TOP_LEFT, moreThanThreeNeighbours, noAliveNeighbours, oneNeighbour, threeNeighbours, twentyByTwentyUniverseWithAGliderInTheTopLeftCorner, twoNeighbours } from '../doubles/stubs';
 
 describe(`This is the component test suite for a finite version of Conways Game of Life.
     The components in this suite all revolve around the functionality of a Tick. Which causes a Universe to proceed to its next state.
     In this next state, the status of a cell can change. A cell can remain unchanged, die or become alive.`, () => {
-    describe(`To determine the next state of a cell, we first need to know how many alive neighbouring cells it has.`, () => {
-            describe('For the sake of simplicity, When our universe consists of 1 row..', () => {
-                
-                it(`░|░|░ the first cell has no alive neighbours
-                `, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[0,0,0]],0,0)).toEqual(0);
-                });
-                it(`░|▓|░ the first cell has one alive neighbour
-                `, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[0, 1, 0]],0,0)).toEqual(1);
-                });
-                it(`▓|▓|▓ the second cell has two alive neighbours
-                `, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 1]],0,1)).toEqual(2);
-                });
-            });
-            describe(`And when our universe consists of multiple rows`, () => {
-                it(noAliveNeighbours.render + ' this cell has no alive neighbours', () => {
-                    expect(determineTheAmountOfAliveNeighbours(
-                        noAliveNeighbours.universe,
-                        TOP_LEFT.row,
-                        TOP_LEFT.column)
-                    ).toEqual(NO_CELLS_ALIVE);
-                });
-                it(`
-        → ▓|▓|░
-          -----
-          ▓|▓|░ this cell has 3 alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 0)).toEqual(3)
-                });
-                it(`
-          ▓|▓|░
-          -----
-          ▓|▓|░
-              ↑ this cell has 2 alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 2)).toEqual(2)
-                });
-                it(`
-            ↓
-          ▓|▓|░
-          -----
-          ▓|▓|░  this one has 3 alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 0, 1)).toEqual(3)
-                });
-                it(`
-          ▓|▓|░
-          -----
-          ▓|▓|░ 
-          ↑    this cell has 3 alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 0], [1, 1, 0]], 1, 0)).toEqual(3)
-                });
-                it(`
-          ▓|▓|▓
-          -----
-          ▓|▓|▓
-          -----
-          ▓|▓|▓ the middle cell has 8 alive neighbours`, () => {
-                    expect(determineTheAmountOfAliveNeighbours([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 1, 1)).toEqual(8)
-            });
-        });
-    });
-    describe(`Now that we know the amount of alive neighbours, we can determine the state of a cell after a tick.`, () => {
+    describe(`So we have to determine the next status of a cell. This is done based on its current status and the amount of alive neighbours.`, () => {
             describe(`Looking at one specific cell that is alive, it will`, () => {
                 it('die when it only has 1 alive neighbour, because of underpopulation. It takes two to tango, they say.', () => {
                     expect(determineNextStatusOfCell(ALIVE, oneNeighbour)).toEqual(DEAD)
@@ -98,5 +37,19 @@ describe(`This is the component test suite for a finite version of Conways Game 
                     expect(determineNextStatusOfCell(DEAD, moreThanThreeNeighbours)).toEqual(DEAD)
                 });
             });
+    });
+});
+
+describe('This is a component test suite for the API functionality of the Game of Life!', () => {
+    describe('The first step in the game is to start a new game', () => {
+        it('When the game is started, the requested universe should be returned', () => {
+            const height: number = 20;
+            const width: number = 20;
+            const pattern: string = 'glider';
+
+            const newUniverse = startNewGame(height, width, pattern);
+
+            expect(newUniverse).toEqual(twentyByTwentyUniverseWithAGliderInTheTopLeftCorner);
+        });
     });
 });

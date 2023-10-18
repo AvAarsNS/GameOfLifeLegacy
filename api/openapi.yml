@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Game of Life API
+  version: 1.0.0
+  description: An API to simulate the Game of Life.
+
+paths:
+  /start:
+    post:
+      summary: Start a new game
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameConfiguration'
+      responses:
+        '200':
+          description: Game started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniverseResponse'
+        '400':
+          description: Invalid configuration provided
+
+  /tick:
+    post:
+      summary: Generate the next tick for the universe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UniverseState'
+      responses:
+        '200':
+          description: Next tick generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniverseResponse'
+        '400':
+          description: Invalid input provided
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    GameConfiguration:
+      type: object
+      properties:
+        width:
+          type: integer
+          maximum: 20
+          description: Width of the game universe.
+        height:
+          type: integer
+          maximum: 20
+          description: Height of the game universe.
+        pattern:
+          type: string
+          enum:
+            - Glider
+            - Spaceship
+            - RANDOM
+          description: Selected pattern or RANDOM for a random pattern.
+        
+    UniverseState:
+      type: object
+      properties:
+        universe:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+              enum: [0, 1]
+              description: State of a cell, 0 for dead and 1 for alive.
+      required:
+        - universe
+
+    UniverseResponse:
+      type: object
+      properties:
+        tickNumber:
+          type: integer
+          description: The number of ticks that have occurred.
+        universe:
+          type: array
+          items:
+            type: array
+            items:
+                    type: integer
+                    enum: [0, 1]
+                    description: State of a cell, 0 for dead and 1 for alive.
+            required:
+              - tickNumber
+              - universe
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/mcoen93ns/Geheim/1.0.0
