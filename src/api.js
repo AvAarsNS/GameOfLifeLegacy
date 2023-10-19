@@ -5,10 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 var express_1 = __importDefault(require("express"));
+var gameoflife_1 = require("./gameoflife");
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
 exports.app.post("/start", function (req, res) {
-    var response = "Welcome to the galaxy";
+    var response = (0, gameoflife_1.startNewGame)(req.body.height, req.body.width, req.body.pattern);
     res.json({
         response: response,
     });

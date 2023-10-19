@@ -10,7 +10,8 @@ import { isTheCellAlive,
     isCoordinateInUniverse,
     extractNeighbours, 
     determineTheAmountOfAliveNeighbours,
-    CellStatus} from "../../src/gameoflife";
+    CellStatus,
+    addPatternToUniverse} from "../../src/gameoflife";
 import { zeroNeighbours,
     oneNeighbour,
     twoNeighbours,
@@ -18,7 +19,7 @@ import { zeroNeighbours,
     notThreeNeighbours,
     atLeastFourNeighbours,
     lessThanFourNeighbours,
-    fiveByFiveUniverse, threeByThreeUniverse, rowOfDeadCells, rowWith2AliveCells, rowWith4AliveCells } from "../doubles/stubs";
+    fiveByFiveUniverse, threeByThreeUniverse, rowOfDeadCells, rowWith2AliveCells, rowWith4AliveCells, twentyByTwentyUniverseWithAGliderInTheTopLeftCorner } from "../doubles/stubs";
 
 describe(`This is a test suite for a finite version of Conways Game of Life. 
     The rules of the game will be explained below. The goal of this finite version is to create the next Tick of the Universe.
@@ -199,6 +200,16 @@ describe(`This is a test suite for a finite version of Conways Game of Life.
             it('and not when there are less than 4 (e.g. 3)', () => {
                 expect(determineIfThereIsOvercrowding(lessThanFourNeighbours)).toEqual(false)
             });
+        });
+    });
+});
+describe('Now that we have our universe we want to be able to play it', () => {
+    describe('After initializing the universe a pattern can be added', () => {
+        it('We start with a glider', () => {
+            const universe = createUniverse(20, 20);
+            const pattern = 'glider';
+            const gliderUniverse = addPatternToUniverse(universe, pattern);
+            expect(gliderUniverse).toEqual(twentyByTwentyUniverseWithAGliderInTheTopLeftCorner);
         });
     });
 });

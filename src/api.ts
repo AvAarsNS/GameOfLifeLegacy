@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
+import { startNewGame } from "./gameoflife";
 
 export const app: express.Application = express();
 
 app.use(express.json());
 
 app.post("/start", (req: Request, res: Response) => {
-  const response = `Welcome to the galaxy`;
+  const response = startNewGame(req.body.height, req.body.width, req.body.pattern);
 
   res.json({
     response,

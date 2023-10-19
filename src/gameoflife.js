@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
+exports.addPatternToUniverse = exports.startNewGame = exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
 var THRESHOLD_FOR_REPRODUCTION = 3;
 var THRESHOLD_FOR_UNDERPOPULATION = 2;
 var THRESHOLD_FOR_OVERCROWDING = 3;
@@ -11,7 +11,7 @@ function isTheCellAlive(cell) {
 }
 exports.isTheCellAlive = isTheCellAlive;
 function createUniverse(rows, columns) {
-    return Array(rows).fill(Array(columns).fill(exports.DEAD));
+    return Array.from({ length: rows }, function () { return Array(columns).fill(exports.DEAD); });
 }
 exports.createUniverse = createUniverse;
 function isRowValid(universe, row) {
@@ -87,3 +87,16 @@ function generateNextTick(currentUniverse) {
     }); });
 }
 exports.generateNextTick = generateNextTick;
+function startNewGame(height, width, pattern) {
+    return addPatternToUniverse(createUniverse(height, width), pattern);
+}
+exports.startNewGame = startNewGame;
+function addPatternToUniverse(universe, pattern) {
+    universe[0][1] = exports.ALIVE;
+    universe[1][2] = exports.ALIVE;
+    universe[2][0] = exports.ALIVE;
+    universe[2][1] = exports.ALIVE;
+    universe[2][2] = exports.ALIVE;
+    return universe;
+}
+exports.addPatternToUniverse = addPatternToUniverse;

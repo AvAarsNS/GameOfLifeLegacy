@@ -77,8 +77,12 @@ The following functions need to be refactored to reduce the cyclomatic complexit
   "height": 20,
   "pattern": "GLIDER"
 }
+🙌- Make the API return the universe
 
-🙌 - Component: start a new game!
--- Dimensions
--- Glider
+- Component: start a new game!
+✅-- Dimensions
+✅-- Glider
 -- Blinker
+
+- Unit: add pattern to universe
+✅-- Glider

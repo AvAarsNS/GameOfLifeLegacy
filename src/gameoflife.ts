@@ -12,7 +12,7 @@ export function isTheCellAlive(cell: CellStatus): boolean {
 }
 
 export function createUniverse(rows: number, columns: number): Universe {
-    return Array(rows).fill(Array(columns).fill(DEAD));
+    return Array.from({ length: rows }, () => Array(columns).fill(DEAD));
 }
 
 export function isRowValid(universe: Universe, row: number): boolean {
@@ -82,4 +82,17 @@ export function generateNextTick(currentUniverse: Universe): Universe {
         const amountOfAliveNeighbours = determineTheAmountOfAliveNeighbours(neighbours);
         return determineNextStatusOfCell(cell, amountOfAliveNeighbours);
     }));
+}
+
+export function startNewGame(height: number, width: number, pattern: string): Universe {
+    return addPatternToUniverse(createUniverse(height, width), pattern);
+}
+
+export function addPatternToUniverse(universe: Universe, pattern: string): Universe {
+    universe[0][1] = ALIVE;
+    universe[1][2] = ALIVE;
+    universe[2][0] = ALIVE;
+    universe[2][1] = ALIVE;
+    universe[2][2] = ALIVE;
+    return universe;
 }

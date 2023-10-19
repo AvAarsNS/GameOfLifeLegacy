@@ -1,7 +1,8 @@
 import { determineTheAmountOfAliveNeighbours,
         determineNextStatusOfCell, 
         DEAD,
-        ALIVE} 
+        ALIVE,
+        startNewGame} 
         from '../../src/gameoflife';
 import { NO_CELLS_ALIVE, TOP_LEFT, moreThanThreeNeighbours, noAliveNeighbours, oneNeighbour, threeNeighbours, twentyByTwentyUniverseWithAGliderInTheTopLeftCorner, twoNeighbours } from '../doubles/stubs';
 
