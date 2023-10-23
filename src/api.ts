@@ -6,11 +6,17 @@ export const app: express.Application = express();
 app.use(express.json());
 
 app.post("/start", (req: Request, res: Response) => {
-  const response = startNewGame(req.body.height, req.body.width, req.body.pattern);
+  const universe = startNewGame(req.body.height, req.body.width, req.body.pattern);
 
   res.json({
-    response,
+    tickNumber: 0,
+    universe,
   });
+});
+
+app.post("/tick", (req: Request, res: Response) => {
+  res.statusCode = 404;
+  res.send();
 });
 
 app.listen(3000, () => {

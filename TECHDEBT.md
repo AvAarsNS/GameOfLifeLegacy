@@ -1,0 +1,3 @@
+- Universe of different sizes could be tested
+- Other patterns should be added
+- What if a pattern does not fit in the universe?

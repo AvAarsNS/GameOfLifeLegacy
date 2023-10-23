@@ -20,7 +20,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UniverseResponse'
+                $ref: '#/components/schemas/UniverseState'
         '400':
           description: Invalid configuration provided
 
@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UniverseResponse'
+                $ref: '#/components/schemas/UniverseState'
         '400':
           description: Invalid input provided
         '500':
@@ -69,6 +69,9 @@ components:
     UniverseState:
       type: object
       properties:
+        tickNumber:
+          type: integer
+          description: The number of ticks that have occurred.
         universe:
           type: array
           items:
@@ -78,25 +81,9 @@ components:
               enum: [0, 1]
               description: State of a cell, 0 for dead and 1 for alive.
       required:
+        - tickNumber
         - universe
-
-    UniverseResponse:
-      type: object
-      properties:
-        tickNumber:
-          type: integer
-          description: The number of ticks that have occurred.
-        universe:
-          type: array
-          items:
-            type: array
-            items:
-                    type: integer
-                    enum: [0, 1]
-                    description: State of a cell, 0 for dead and 1 for alive.
-            required:
-              - tickNumber
-              - universe
+        
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking

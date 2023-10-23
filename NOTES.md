@@ -69,6 +69,7 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 # API
 
 ## POST start game
+- E2E: User starts a new Game of Life
 ✅ - Create the API and the POST call scaffolding
 ✅ - Create a test for the POST call, for a simple universe with ReadyAPI
 
@@ -77,7 +78,11 @@ The following functions need to be refactored to reduce the cyclomatic complexit
   "height": 20,
   "pattern": "GLIDER"
 }
-🙌- Make the API return the universe
+✅ - Make the API return the universe
+
+- Adhere to the openAPI spec
+✅ - tickNumber should be 0
+✅- universe should be filled
 
 - Component: start a new game!
 ✅-- Dimensions
@@ -86,3 +91,9 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 
 - Unit: add pattern to universe
 ✅-- Glider
+
+- E2E: User generates a new tick
+🙌 - Create test
+
+*QUESTION FOR THE ITALIAN GURU*
+- When to use cucumber? E2E in cypress seems logical, but we already use it here for components (glider, blinker)
