@@ -87,13 +87,16 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 - Component: start a new game!
 ✅-- Dimensions
 ✅-- Glider
--- Blinker
+🙌-- Blinker
 
 - Unit: add pattern to universe
 ✅-- Glider
 
 - E2E: User generates a new tick
-🙌 - Create test
+✅ - Create test
+✅ - Implement the functionality in the API to generate the next tick
+
+
 
 *QUESTION FOR THE ITALIAN GURU*
 - When to use cucumber? E2E in cypress seems logical, but we already use it here for components (glider, blinker)

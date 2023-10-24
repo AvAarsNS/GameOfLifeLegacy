@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { startNewGame } from "./gameoflife";
+import { generateNextTick, startNewGame } from "./gameoflife";
 
 export const app: express.Application = express();
 
@@ -15,8 +15,13 @@ app.post("/start", (req: Request, res: Response) => {
 });
 
 app.post("/tick", (req: Request, res: Response) => {
-  res.statusCode = 404;
-  res.send();
+  const nextUniverse = generateNextTick(req.body.universe);
+  const tickNumber = req.body.tickNumber + 1;
+
+  res.json({
+    tickNumber,
+    universe: nextUniverse,
+  });
 });
 
 app.listen(3000, () => {

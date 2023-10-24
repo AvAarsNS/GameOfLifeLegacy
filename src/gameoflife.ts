@@ -89,10 +89,25 @@ export function startNewGame(height: number, width: number, pattern: string): Un
 }
 
 export function addPatternToUniverse(universe: Universe, pattern: string): Universe {
+    if (pattern === 'glider') {
+        return addGliderToUniverse(universe);
+    } else if (pattern === 'blinker') {
+        return addBlinkerToUniverse(universe);
+    } else return universe;
+}
+
+export function addGliderToUniverse(universe: Universe): Universe {
     universe[0][1] = ALIVE;
     universe[1][2] = ALIVE;
     universe[2][0] = ALIVE;
     universe[2][1] = ALIVE;
     universe[2][2] = ALIVE;
+    return universe;
+}
+
+export function addBlinkerToUniverse(universe: Universe): Universe {
+    universe[1][0] = ALIVE;
+    universe[1][1] = ALIVE;
+    universe[1][2] = ALIVE;
     return universe;
 }

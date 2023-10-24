@@ -16,8 +16,12 @@ exports.app.post("/start", function (req, res) {
     });
 });
 exports.app.post("/tick", function (req, res) {
-    res.statusCode = 404;
-    res.send();
+    var nextUniverse = (0, gameoflife_1.generateNextTick)(req.body.universe);
+    var tickNumber = req.body.tickNumber + 1;
+    res.json({
+        tickNumber: tickNumber,
+        universe: nextUniverse,
+    });
 });
 exports.app.listen(3000, function () {
     console.log("App is listening on port 3000!");
