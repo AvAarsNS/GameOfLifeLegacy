@@ -79,6 +79,7 @@ The following functions need to be refactored to reduce the cyclomatic complexit
   "pattern": "GLIDER"
 }
 ✅ - Make the API return the universe
+- Add enumeration value for pattern name to API
 
 - Adhere to the openAPI spec
 ✅ - tickNumber should be 0
@@ -87,10 +88,11 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 - Component: start a new game!
 ✅-- Dimensions
 ✅-- Glider
-🙌-- Blinker
 
 - Unit: add pattern to universe
 ✅-- Glider
+✅-- Blinker
+✅-- Beehive
 
 - E2E: User generates a new tick
 ✅ - Create test

@@ -19,7 +19,7 @@ import { zeroNeighbours,
     notThreeNeighbours,
     atLeastFourNeighbours,
     lessThanFourNeighbours,
-    fiveByFiveUniverse, threeByThreeUniverse, rowOfDeadCells, rowWith2AliveCells, rowWith4AliveCells, twentyByTwentyUniverseWithAGliderInTheTopLeftCorner, twentyByTwentyUniverseWithABlinkerInTheTopLeftCorner } from "../doubles/stubs";
+    fiveByFiveUniverse, threeByThreeUniverse, rowOfDeadCells, rowWith2AliveCells, rowWith4AliveCells, twentyByTwentyUniverseWithAGliderInTheTopLeftCorner, twentyByTwentyUniverseWithABlinkerInTheTopLeftCorner, twentyByTwentyUniverseWithABeehiveInTheTopLeftCorner } from "../doubles/stubs";
 
 describe(`This is a test suite for a finite version of Conways Game of Life. 
     The rules of the game will be explained below. The goal of this finite version is to create the next Tick of the Universe.
@@ -216,6 +216,12 @@ describe('Now that we have our universe we want to be able to play it', () => {
             const pattern = 'blinker';
             const blinkerUniverse = addPatternToUniverse(universe, pattern);
             expect(blinkerUniverse).toEqual(twentyByTwentyUniverseWithABlinkerInTheTopLeftCorner);
+        });
+        it('Or we can add a beehive', () => {
+            const universe = createUniverse(20, 20);
+            const pattern = 'beehive';
+            const beehiveUniverse = addPatternToUniverse(universe, pattern);
+            expect(beehiveUniverse).toEqual(twentyByTwentyUniverseWithABeehiveInTheTopLeftCorner);
         });
     });
 });

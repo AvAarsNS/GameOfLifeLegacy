@@ -46,7 +46,7 @@ describe('This is a component test suite for the API functionality of the Game o
         it('When the game is started, the requested universe should be returned', () => {
             const height: number = 20;
             const width: number = 20;
-            const pattern: string = 'glider';
+            const pattern = 'glider';
 
             const newUniverse = startNewGame(height, width, pattern);
 

@@ -84,16 +84,24 @@ export function generateNextTick(currentUniverse: Universe): Universe {
     }));
 }
 
-export function startNewGame(height: number, width: number, pattern: string): Universe {
+export function startNewGame(height: number, width: number, pattern: PatternName): Universe {
     return addPatternToUniverse(createUniverse(height, width), pattern);
 }
 
-export function addPatternToUniverse(universe: Universe, pattern: string): Universe {
-    if (pattern === 'glider') {
-        return addGliderToUniverse(universe);
-    } else if (pattern === 'blinker') {
-        return addBlinkerToUniverse(universe);
-    } else return universe;
+type PatternName = keyof typeof patternFunctions;
+
+const patternFunctions = {
+    glider: addGliderToUniverse,
+    blinker: addBlinkerToUniverse,
+    beehive: addBeehiveToUniverse,
+};
+
+export function addPatternToUniverse(
+  universe: Universe,
+  pattern: PatternName
+): Universe {
+  const patternFunction = patternFunctions[pattern];
+    return patternFunction(universe);
 }
 
 export function addGliderToUniverse(universe: Universe): Universe {
@@ -109,5 +117,15 @@ export function addBlinkerToUniverse(universe: Universe): Universe {
     universe[1][0] = ALIVE;
     universe[1][1] = ALIVE;
     universe[1][2] = ALIVE;
+    return universe;
+}
+
+export function addBeehiveToUniverse(universe: Universe): Universe {
+    universe[0][1] = ALIVE;
+    universe[0][2] = ALIVE;
+    universe[1][0] = ALIVE;
+    universe[1][3] = ALIVE;
+    universe[2][1] = ALIVE;
+    universe[2][2] = ALIVE;
     return universe;
 }
