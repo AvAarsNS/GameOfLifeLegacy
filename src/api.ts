@@ -6,6 +6,11 @@ export const app: express.Application = express();
 app.use(express.json());
 
 app.post("/start", (req: Request, res: Response) => {
+  const validPatterns = ["random", "glider", "beehive", "blinker"];
+  if (!req.body.pattern || !validPatterns.includes(req.body.pattern)) {
+    res.status(400).send("Invalid pattern");
+    return;
+  }
   const universe = startNewGame(req.body.height, req.body.width, req.body.pattern);
 
   res.json({

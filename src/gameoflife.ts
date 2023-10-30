@@ -129,3 +129,14 @@ export function addBeehiveToUniverse(universe: Universe): Universe {
     universe[2][2] = ALIVE;
     return universe;
 }
+
+export function addRandomDeadAndAliveCellsToUniverse(universe: Universe): Universe {
+    const randomUniverse = universe.map(row => row.map(cell => {
+        const random = Math.random();
+        if (random > 0.5) {
+            return ALIVE;
+        }
+        return DEAD;
+    }));
+    return randomUniverse;
+}

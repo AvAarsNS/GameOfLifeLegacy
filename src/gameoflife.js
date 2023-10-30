@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addPatternToUniverse = exports.startNewGame = exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
+exports.addBeehiveToUniverse = exports.addBlinkerToUniverse = exports.addGliderToUniverse = exports.addPatternToUniverse = exports.startNewGame = exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
 var THRESHOLD_FOR_REPRODUCTION = 3;
 var THRESHOLD_FOR_UNDERPOPULATION = 2;
 var THRESHOLD_FOR_OVERCROWDING = 3;
@@ -91,7 +91,17 @@ function startNewGame(height, width, pattern) {
     return addPatternToUniverse(createUniverse(height, width), pattern);
 }
 exports.startNewGame = startNewGame;
+var patternFunctions = {
+    glider: addGliderToUniverse,
+    blinker: addBlinkerToUniverse,
+    beehive: addBeehiveToUniverse,
+};
 function addPatternToUniverse(universe, pattern) {
+    var patternFunction = patternFunctions[pattern];
+    return patternFunction(universe);
+}
+exports.addPatternToUniverse = addPatternToUniverse;
+function addGliderToUniverse(universe) {
     universe[0][1] = exports.ALIVE;
     universe[1][2] = exports.ALIVE;
     universe[2][0] = exports.ALIVE;
@@ -99,4 +109,21 @@ function addPatternToUniverse(universe, pattern) {
     universe[2][2] = exports.ALIVE;
     return universe;
 }
-exports.addPatternToUniverse = addPatternToUniverse;
+exports.addGliderToUniverse = addGliderToUniverse;
+function addBlinkerToUniverse(universe) {
+    universe[1][0] = exports.ALIVE;
+    universe[1][1] = exports.ALIVE;
+    universe[1][2] = exports.ALIVE;
+    return universe;
+}
+exports.addBlinkerToUniverse = addBlinkerToUniverse;
+function addBeehiveToUniverse(universe) {
+    universe[0][1] = exports.ALIVE;
+    universe[0][2] = exports.ALIVE;
+    universe[1][0] = exports.ALIVE;
+    universe[1][3] = exports.ALIVE;
+    universe[2][1] = exports.ALIVE;
+    universe[2][2] = exports.ALIVE;
+    return universe;
+}
+exports.addBeehiveToUniverse = addBeehiveToUniverse;
