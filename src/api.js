@@ -9,6 +9,11 @@ var gameoflife_1 = require("./gameoflife");
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
 exports.app.post("/start", function (req, res) {
+    var validPatterns = ["random", "glider", "beehive", "blinker"];
+    if (!req.body.pattern || !validPatterns.includes(req.body.pattern)) {
+        res.status(400).send("Invalid pattern");
+        return;
+    }
     var universe = (0, gameoflife_1.startNewGame)(req.body.height, req.body.width, req.body.pattern);
     res.json({
         tickNumber: 0,

@@ -11,7 +11,8 @@ import { isTheCellAlive,
     extractNeighbours, 
     determineTheAmountOfAliveNeighbours,
     CellStatus,
-    addPatternToUniverse} from "../../src/gameoflife";
+    addPatternToUniverse,
+    addRandomDeadAndAliveCellsToUniverse} from "../../src/gameoflife";
 import { zeroNeighbours,
     oneNeighbour,
     twoNeighbours,
@@ -222,6 +223,11 @@ describe('Now that we have our universe we want to be able to play it', () => {
             const pattern = 'beehive';
             const beehiveUniverse = addPatternToUniverse(universe, pattern);
             expect(beehiveUniverse).toEqual(twentyByTwentyUniverseWithABeehiveInTheTopLeftCorner);
+        });
+        it('Or we can add a random', () => {
+            const universe = createUniverse(20, 20);
+            const randomUniverse = addRandomDeadAndAliveCellsToUniverse(universe);
+            expect(randomUniverse).not.toEqual(universe);
         });
     });
 });

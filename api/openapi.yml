@@ -61,10 +61,11 @@ components:
         pattern:
           type: string
           enum:
-            - Glider
-            - Spaceship
-            - RANDOM
-          description: Selected pattern or RANDOM for a random pattern.
+            - glider
+            - blinker
+            - beehive
+            - random
+          description: Selected pattern for pattern that was selected or random for a random pattern.
         
     UniverseState:
       type: object
