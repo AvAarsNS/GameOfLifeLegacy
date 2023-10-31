@@ -102,3 +102,5 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 
 *QUESTION FOR THE ITALIAN GURU*
 - When to use cucumber? E2E in cypress seems logical, but we already use it here for components (glider, blinker)
+- In our new AWS app we don't have a integration test between AWS and Mendix to ensure the input is correctly processed. Is that needed or would an Open API spec (and validating the output of AWS and input of Mendix matches this spec) suffice?
+- We have split our component and unit test. But, to make them read like a book it seems more logic to group them in one 'story'. Why are we making this split?
