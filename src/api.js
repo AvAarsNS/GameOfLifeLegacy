@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
 var gameoflife_1 = require("./gameoflife");
 exports.app = (0, express_1.default)();
+exports.app.use((0, cors_1.default)()); // Enable CORS
 exports.app.use(express_1.default.json());
 exports.app.post("/start", function (req, res) {
     var validPatterns = ["random", "glider", "beehive", "blinker"];
@@ -28,6 +30,6 @@ exports.app.post("/tick", function (req, res) {
         universe: nextUniverse,
     });
 });
-exports.app.listen(3000, function () {
-    console.log("App is listening on port 3000!");
+exports.app.listen(8088, function () {
+    console.log("App is listening on port 9231803989839102!");
 });

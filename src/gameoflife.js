@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addBeehiveToUniverse = exports.addBlinkerToUniverse = exports.addGliderToUniverse = exports.addPatternToUniverse = exports.startNewGame = exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
+exports.addRandomDeadAndAliveCellsToUniverse = exports.addBeehiveToUniverse = exports.addBlinkerToUniverse = exports.addGliderToUniverse = exports.addPatternToUniverse = exports.startNewGame = exports.generateNextTick = exports.deadCellCanReproduce = exports.determineNextStatusOfCell = exports.determineIfThereIsOvercrowding = exports.determineIfThereIsUnderpopulation = exports.determineTheAmountOfAliveNeighbours = exports.extractNeighbours = exports.isCoordinateInUniverse = exports.isColumnValid = exports.isRowValid = exports.createUniverse = exports.isTheCellAlive = exports.ALIVE = exports.DEAD = void 0;
 var THRESHOLD_FOR_REPRODUCTION = 3;
 var THRESHOLD_FOR_UNDERPOPULATION = 2;
 var THRESHOLD_FOR_OVERCROWDING = 3;
@@ -127,3 +127,14 @@ function addBeehiveToUniverse(universe) {
     return universe;
 }
 exports.addBeehiveToUniverse = addBeehiveToUniverse;
+function addRandomDeadAndAliveCellsToUniverse(universe) {
+    var randomUniverse = universe.map(function (row) { return row.map(function (cell) {
+        var random = Math.random();
+        if (random > 0.5) {
+            return exports.ALIVE;
+        }
+        return exports.DEAD;
+    }); });
+    return randomUniverse;
+}
+exports.addRandomDeadAndAliveCellsToUniverse = addRandomDeadAndAliveCellsToUniverse;
