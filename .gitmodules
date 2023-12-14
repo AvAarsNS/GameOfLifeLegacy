@@ -1,0 +1,3 @@
+[submodule "GameOfLife_API"]
+	path = GameOfLife_API
+	url = https://github.com/AvAarsNS/GameOfLife_API.git
