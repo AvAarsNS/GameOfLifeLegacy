@@ -107,3 +107,24 @@ The following functions need to be refactored to reduce the cyclomatic complexit
 - When to use cucumber? E2E in cypress seems logical, but we already use it here for components (glider, blinker)
 - In our new AWS app we don't have a integration test between AWS and Mendix to ensure the input is correctly processed. Is that needed or would an Open API spec (and validating the output of AWS and input of Mendix matches this spec) suffice?
 - We have split our component and unit test. But, to make them read like a book it seems more logic to group them in one 'story'. Why are we making this split?
+
+
+
+
+# User story: random pattern
+As the API consumer 
+I want to be able to start a new game with a random pattern, 
+so that I can play the game with a random pattern.
+
+GIVEN a user has opened the Game of Life in his browser
+AND the user has selected the random pattern
+WHEN the user clicks on the start button
+THEN the user sees a random pattern in the universe
+
+GIVEN an API consumer wants to play the Game of Life
+AND the API consumer has selected the random pattern
+WHEN the POST start game is invoked
+THEN a response is returned
+AND it contains a random universe at tick 0
+AND the HTTP status code is 200
+AND the content type is application/json
