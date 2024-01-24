@@ -1,5 +1,6 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import { generateNextTick } from "../../src/gameoflife";
+import { emptyUniverse, universeWithHorizontalBlinker } from "../double/universe.stub";
 
 // Assuming `ALIVE` is 1 and `DEAD` is 0
 type CellStatus = 0 | 1;
@@ -13,11 +14,7 @@ defineFeature(feature, (test) => {
         let nextUniverse: Universe;
 
         given(/^we have a universe of 3 by 3$/, () => {
-            universe = [
-                [0, 0, 0],
-                [0, 0, 0],
-                [0, 0, 0]
-            ];
+            universe = emptyUniverse;
         });
 
         and('it contains vertical blinker', () => {
@@ -31,11 +28,7 @@ defineFeature(feature, (test) => {
         });
 
         then('it has evolved to a 3x3 universe with a horizontal blinker', () => {
-            expect(nextUniverse).toEqual([
-                [0, 0, 0],
-                [1, 1, 1],
-                [0, 0, 0]
-            ]);
+            expect(nextUniverse).toEqual(universeWithHorizontalBlinker);
         });
     });
 });
