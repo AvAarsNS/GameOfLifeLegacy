@@ -12,7 +12,7 @@ import { isTheCellAlive,
     determineTheAmountOfAliveNeighbours,
     CellStatus,
     addPatternToUniverse,
-    addRandomDeadAndAliveCellsToUniverse} from "../../src/gameoflife";
+    addRandomCellsToUniverse} from "../../src/gameoflife";
 import { zeroNeighbours,
     oneNeighbour,
     twoNeighbours,
@@ -226,7 +226,7 @@ describe('Now that we have our universe we want to be able to play it', () => {
         });
         it('Or we can add a random', () => {
             const universe = createUniverse(20, 20);
-            const randomUniverse = addRandomDeadAndAliveCellsToUniverse(universe);
+            const randomUniverse = addRandomCellsToUniverse(universe);
             expect(randomUniverse).not.toEqual(universe);
         });
     });

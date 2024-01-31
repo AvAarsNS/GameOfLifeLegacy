@@ -13,7 +13,7 @@ app.post("/start", (req: Request, res: Response) => {
 
 export function startTheGame(req: Request, res: Response): Response {
   const validPatterns = ["random", "glider", "beehive", "blinker"];
-  if (!req.body.pattern || !validPatterns.includes(req.body.pattern)) {
+  if (isPatternInvalid(req.body.pattern, validPatterns)) {
     res.status(400).send("Invalid pattern");
     return res;
   }
@@ -41,3 +41,7 @@ app.post("/tick", (req: Request, res: Response) => {
 app.listen(8088, () => {
   console.log("App is listening on port 9231803989839102!");
 });
+
+function isPatternInvalid(pattern: string, validPatterns: string[]) {
+  return !pattern || !validPatterns.includes(pattern);
+}

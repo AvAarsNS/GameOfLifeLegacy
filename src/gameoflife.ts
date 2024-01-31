@@ -88,9 +88,9 @@ export function startNewGame(height: number, width: number, pattern: PatternName
     return addPatternToUniverse(createUniverse(height, width), pattern);
 }
 
-type PatternName = keyof typeof patternFunctions;
+type PatternName = keyof typeof seeds;
 
-const patternFunctions = {
+const seeds = {
     glider: addGliderToUniverse,
     blinker: addBlinkerToUniverse,
     beehive: addBeehiveToUniverse,
@@ -100,7 +100,7 @@ export function addPatternToUniverse(
   universe: Universe,
   pattern: PatternName
 ): Universe {
-  const patternFunction = patternFunctions[pattern];
+  const patternFunction = seeds[pattern];
     return patternFunction(universe);
 }
 
@@ -130,13 +130,17 @@ export function addBeehiveToUniverse(universe: Universe): Universe {
     return universe;
 }
 
-export function addRandomDeadAndAliveCellsToUniverse(universe: Universe): Universe {
-    const randomUniverse = universe.map(row => row.map(cell => {
-        const random = Math.random();
-        if (random > 0.5) {
-            return ALIVE;
-        }
-        return DEAD;
-    }));
+const generateRandomCell = (): CellStatus => {
+    const random = Math.random();
+    if (random > 0.5) {
+        return ALIVE;
+    }
+    return DEAD;
+};
+
+const addRandomCellsToRow = (row: CellStatus[]): CellStatus[] => row.map(generateRandomCell);
+
+export function addRandomCellsToUniverse(universe: Universe): Universe {
+    const randomUniverse = universe.map(addRandomCellsToRow);
     return randomUniverse;
 }
